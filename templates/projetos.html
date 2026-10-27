@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projetos de Matheus Sousa dos Santos — Atlas Engineering OS, TokLang, Thallium e automações.">
+    <meta name="description" content="Projetos de Matheus Sousa dos Santos -- Atlas Engineering OS, TokLang, Thallium e ThPay.">
     <title>Projetos — Matheus Sousa dos Santos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        :root {
+            --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --color-accent-gold: #D8B46A;
+        }
+        a:active, button:active, .card:active {
+            transform: scale(0.98);
+            transition: transform 80ms cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -82,9 +101,9 @@
                             <span class="tag">AI Middleware</span>
                             <span class="tag">Prompt Compression</span>
                         </div>
-                        <p>Compilador e middleware de compressão semântica em tempo real que traduz linguagem natural em representações otimizadas, economizando até 85% de tokens.</p>
+                        <p>Compilador formal deterministico (AST/LL1) e otimizador de contexto para LLMs com benchmark na nuvem NVIDIA NIM sobre cluster A100 SXM4, reduzindo 56.2% de tokens faturados e 80.7% em FLOPs.</p>
                         <div style="text-align: center; margin-top: auto; padding-top: 1.5rem;">
-                            <a href="https://github.com/Taiwansz/TokLang" target="_blank" class="btn-primary">Ver Projeto</a>
+                            <a href="https://github.com/Taiwansz/TCC-CIENCIAS-DA-COMPUTACAO-2026" target="_blank" class="btn-primary">Ver Projeto</a>
                         </div>
                     </div>
                 </div>

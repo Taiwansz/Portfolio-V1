@@ -15,12 +15,14 @@
   --color-accent-dim: rgba(255, 255, 255, 0.5);
   --color-white: #ffffff;
   --color-grey-1: #a0a0a0;
-  --color-grey-2: #666666;
-  --color-grey-3: #333333;
+  --color-grey-2: #8E929E;
+  --color-grey-3: #4a4d57;
+  --color-lime: #D8B46A;
+  --color-accent-gold: #D8B46A;
   --cubic: cubic-bezier(0.25, 1, 0.5, 1);
   --duration: 0.8s;
   --animation: var(--duration) var(--cubic);
-  --font-heading: 'Outfit', sans-serif;
+  --font-heading: 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Inter', sans-serif;
   --gap: 1.5rem;
 }
@@ -420,7 +422,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
 #preloader.hide { opacity: 0; pointer-events: none; }
 #loader-count { font-family: var(--font-heading); font-size: 4rem; font-weight: 300; color: var(--color-white); }
 
-.page-transition-layer { position: fixed; inset: 0; background: var(--color-white); z-index: 9998; transform: translateY(100%); transition: transform 0.7s var(--cubic); }
+.page-transition-layer { position: fixed; inset: 0; background: #0D0E12; z-index: 9998; transform: translateY(100%); transition: transform 0.7s var(--cubic); }
 .page-transition-layer.active { transform: translateY(0); }
 .page-transition-layer.exit { transform: translateY(-100%); }
 
@@ -542,5 +544,42 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 
   .content-block a {
     word-break: break-all;
+  }
+}
+
+
+/* ----------------------------------------------------------
+   20. UTILITIES, SENSORY ACCESSIBILITY & APPLE DESIGN MOTION
+   ---------------------------------------------------------- */
+.navbar.nav-hidden {
+  transform: translate(-50%, -100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh;
+}
+
+/* Microinteracoes Tatis com Fisica Optica */
+a:active, button:active, .card:active, .btn-primary:active, .btn-secondary:active {
+  transform: scale(0.98);
+  transition: transform 80ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .navbar, .content-block, .card, .deep-dive-container {
+    backdrop-filter: none !important;
+    background: #0D0E12 !important;
   }
 }
