@@ -28,3 +28,8 @@ static/uploads/
 ehthumbs.db
 Thumbs.db
 .vercel
+
+screenshots_audit/
+static/images/v2/_contact_sheet.png
+_audit_preview.html
+

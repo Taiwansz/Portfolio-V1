@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, url_for
 from database import db
 from api_taskflow import taskflow_bp
 from api_crypto import crypto_bp
@@ -48,15 +48,15 @@ def home():
 
 @app.route('/sobre')
 def sobre():
-    return render_template('sobre.html')
+    return redirect(url_for('home') + '#trajetoria')
 
 @app.route('/projetos')
 def projetos():
-    return render_template('projetos.html')
+    return redirect(url_for('home') + '#projetos')
 
 @app.route('/portfolio')
 def portfolio():
-    return render_template('portfolio.html')
+    return redirect(url_for('home') + '#projetos')
 
 @app.route('/projetos/taskflow')
 def taskflow():
