@@ -48,7 +48,7 @@ def home():
 
 @app.route('/sobre')
 def sobre():
-    return redirect(url_for('home') + '#trajetoria')
+    return redirect(url_for('home') + '#genese')
 
 @app.route('/projetos')
 def projetos():

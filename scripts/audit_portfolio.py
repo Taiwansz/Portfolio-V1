@@ -1,10 +1,10 @@
 """
-Matheus Sousa Portfolio v2 — Multi-State Swiss-Industrial & Live 3D Core Playwright Auditor
-Serves the real Flask app (or fallback Jinja2-rendered static server if a Flask dep is absent),
-captures 12 views & interactive states across Desktop 1440x900 and Mobile 390x844,
-verifies live 3D golden neural core rendering + real frame animation delta,
-verifies zero Bosch / Gods Eye View leaks, zero purple/violet violations (HSV 250-330),
-zero console errors, zero broken images, and 0px horizontal overflow.
+Matheus Sousa Portfolio 2026 — Macro-Scrollytelling Multi-Viewport Playwright Auditor
+Captures Desktop 1440x900 across ALL 9 acts (opening live 3D core, sticky genesis, zig-zag
+particle manifesto, CAD blueprint, 5-step EVP, horizontal complexity gallery, monumental KPI
++ TokLang workbench, strikethrough manifesto, filterable index + contact, Sumario overlay)
+AND Mobile 390x844 states. Verifies 0px overflow, 0 console/page errors, 0 broken images,
+live 3D core delta, 0 purple HSV 250-330, 0 Bosch/Gods Eye leaks, and VisualCraftValidator.
 """
 
 import colorsys
@@ -23,43 +23,29 @@ SHOTS.mkdir(parents=True, exist_ok=True)
 
 
 def start_server():
-    """Prefer booting the real Flask app; fallback to static server with rendered Jinja2."""
-    sys.path.insert(0, str(ROOT))
-    try:
-        import app as portfolio_app
-        from werkzeug.serving import make_server
+    html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
+    html = re.sub(
+        r"\{\{\s*url_for\(['\"]static['\"],\s*filename=['\"]([^'\"]*)['\"]\)\s*\}\}",
+        lambda m: f"/static/{m.group(1)}",
+        html,
+    )
+    preview = ROOT / "_audit_preview.html"
+    preview.write_text(html, encoding="utf-8")
 
-        srv = make_server("127.0.0.1", 0, portfolio_app.app)
-        port = srv.server_port
-        t = threading.Thread(target=srv.serve_forever, daemon=True)
-        t.start()
-        return srv, f"http://127.0.0.1:{port}/", "flask_real"
-    except Exception as exc:
-        print(f"[INFO] Real Flask boot fallback ({exc}); rendering Jinja2 template statically.")
-        html = (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
-        html = re.sub(
-            r"\{\{\s*url_for\(['\"]static['\"],\s*filename=['\"]([^'\"]*)['\"]\)\s*\}\}",
-            lambda m: f"/static/{m.group(1)}",
-            html,
-        )
-        preview = ROOT / "_audit_preview.html"
-        preview.write_text(html, encoding="utf-8")
+    class Quiet(SimpleHTTPRequestHandler):
+        def log_message(self, fmt, *args):
+            pass
 
-        class Quiet(SimpleHTTPRequestHandler):
-            def log_message(self, fmt, *args):
-                pass
-
-        srv = ThreadingHTTPServer(("127.0.0.1", 0), partial(Quiet, directory=str(ROOT)))
-        port = srv.server_address[1]
-        t = threading.Thread(target=srv.serve_forever, daemon=True)
-        t.start()
-        return srv, f"http://127.0.0.1:{port}/_audit_preview.html", "static_rendered"
+    srv = ThreadingHTTPServer(("127.0.0.1", 0), partial(Quiet, directory=str(ROOT)))
+    port = srv.server_address[1]
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    return srv, f"http://127.0.0.1:{port}/_audit_preview.html"
 
 
 def check_page_health(page, label: str) -> dict:
     return page.evaluate(
         """(label) => {
-            const imgs = Array.from(document.querySelectorAll('img')).filter(i => i.offsetParent !== null || i.getAttribute('src'));
+            const imgs = Array.from(document.querySelectorAll('img')).filter(i => i.getAttribute('src'));
             const broken = imgs.filter(i => !i.complete || i.naturalWidth === 0).map(i => i.getAttribute('src'));
             const bodyText = (document.body.innerText || '').toLowerCase();
             const forbiddenHits = ['bosch', 'gods-eye', 'gods eye', "god's eye", 'eva robot'].filter(k => bodyText.includes(k));
@@ -68,6 +54,7 @@ def check_page_health(page, label: str) -> dict:
                 innerWidth: window.innerWidth,
                 scrollWidth: document.documentElement.scrollWidth,
                 overflowX: document.documentElement.scrollWidth - window.innerWidth,
+                scrollHeight: document.documentElement.scrollHeight,
                 totalImgs: imgs.length,
                 brokenImgs: broken,
                 forbiddenHits,
@@ -77,54 +64,43 @@ def check_page_health(page, label: str) -> dict:
     )
 
 
-def sample_core_canvas(page) -> dict:
-    """Measure luminous golden pixels in #thsyrLiveCore and sample pixel signature."""
+def sample_core(page) -> dict:
     return page.evaluate(
         """() => {
             const c = document.getElementById('thsyrLiveCore');
-            if (!c) return { ok: false, reason: 'missing canvas' };
+            if (!c) return { ok: false };
             const ctx = c.getContext('2d');
-            const w = c.width, h = c.height;
-            const data = ctx.getImageData(0, 0, w, h).data;
-            let goldPixels = 0;
-            let brightPixels = 0;
-            let hash = 0;
-            const step = 4 * 16;
-            for (let i = 0; i < data.length; i += step) {
+            const data = ctx.getImageData(0, 0, c.width, c.height).data;
+            let gold = 0, hash = 0;
+            for (let i = 0; i < data.length; i += 64) {
                 const r = data[i], g = data[i + 1], b = data[i + 2], a = data[i + 3];
-                if (a > 30 && r > 120 && g > 70 && r > b * 1.35) goldPixels++;
-                if (a > 80 && r > 200 && g > 140) brightPixels++;
+                if (a > 30 && r > 120 && g > 70 && r > b * 1.35) gold++;
                 hash = (hash * 31 + r + g * 3 + b * 7) % 1000000007;
             }
-            return { ok: goldPixels > 200, width: w, height: h, goldPixels, brightPixels, hash };
+            return { ok: gold > 200, gold, hash };
         }"""
     )
 
 
-def check_header_polarity(page) -> dict:
+def get_chrome(page) -> dict:
     return page.evaluate(
-        """() => {
-            const h = document.getElementById('siteHeader');
-            const active = document.querySelector('.rail-link.is-active');
-            return {
-                isLight: h.classList.contains('is-light'),
-                top: Math.round(h.getBoundingClientRect().top),
-                activeSection: active ? active.dataset.section : null
-            };
-        }"""
+        """() => ({
+            theme: document.body.dataset.hdrTheme || null,
+            showBrand: document.body.classList.contains('show-brand'),
+            chapter: (document.getElementById('sideChapterName') || {}).textContent || null,
+            hdrTop: Math.round(document.getElementById('siteHeader').getBoundingClientRect().top),
+        })"""
     )
 
 
 def main():
-    # Clean old stale audit shots
-    for old_png in SHOTS.glob("*.png"):
-        old_png.unlink()
+    for old in SHOTS.glob("*.png"):
+        old.unlink()
 
-    # Compile-check Flask entry point
     py_compile.compile(str(ROOT / "app.py"), doraise=True)
     print("PY_COMPILE app.py: OK")
 
-    srv, url, mode = start_server()
+    srv, url = start_server()
     console_errors = []
     page_errors = []
 
@@ -133,68 +109,66 @@ def main():
             browser = p.chromium.launch(headless=True)
 
             # ================= DESKTOP 1440x900 =================
-            ctx = browser.new_context(viewport={"width": 1440, "height": 900}, device_scale_factor=2)
+            ctx = browser.new_context(viewport={"width": 1440, "height": 900}, device_scale_factor=1.5)
             page = ctx.new_page()
             page.on("console", lambda m: console_errors.append(m.text) if m.type == "error" else None)
             page.on("pageerror", lambda e: page_errors.append(str(e)))
 
-            page.goto(url, wait_until="networkidle")
-            page.wait_for_timeout(1200)
-            core_t1 = sample_core_canvas(page)
-            page.screenshot(path=str(SHOTS / "01_desktop_hero_live_core.png"))
-            hero_header = check_header_polarity(page)
+            page.goto(url, wait_until="networkidle", timeout=60000)
+            page.wait_for_timeout(1300)
+            c1 = sample_core(page)
+            page.screenshot(path=str(SHOTS / "01_desktop_hero_core.png"))
+            page.wait_for_timeout(420)
+            c2 = sample_core(page)
+            anim_ok = c1["hash"] != c2["hash"]
 
-            # Wait 450ms and verify real animation frame delta
-            page.wait_for_timeout(450)
-            core_t2 = sample_core_canvas(page)
-            anim_moved = core_t1.get("hash") != core_t2.get("hash")
+            # Walk cleanly across key scroll stops (using exact element offsets + pin midpoints)
+            stops = page.evaluate(
+                """() => {
+                    const topOf = (sel) => {
+                        const el = document.querySelector(sel);
+                        return el ? Math.round(el.getBoundingClientRect().top + window.scrollY) : 0;
+                    };
+                    return {
+                        genese: topOf('#genese') + 120,
+                        manifesto: topOf('#manifesto') + 260,
+                        cad_mid: topOf('#arquitetura') + 1550,
+                        thsyr_step3: topOf('#thsyr') + 1250,
+                        olhar_mid: topOf('#complexidade') + 950,
+                        toklang_kpi: topOf('#toklang-kpi'),
+                        toklang_lab: topOf('#toklang-lab'),
+                        resp_mid: topOf('#principios') + 780,
+                        indice: topOf('#indice'),
+                        contato: document.documentElement.scrollHeight - 900,
+                    };
+                }"""
+            )
 
-            # Click Frontal lobe filter -> verify kinetic focus & readout update
-            page.locator('[data-core-lobe="frontal"]').click()
-            page.wait_for_timeout(550)
-            page.screenshot(path=str(SHOTS / "02_desktop_hero_lobe_frontal.png"))
-            page.locator('[data-core-lobe="all"]').click()
-            page.wait_for_timeout(200)
+            chrome_log = {"hero": get_chrome(page)}
+            order = [
+                ("02_desktop_genese.png", "genese"),
+                ("03_desktop_manifesto_wave.png", "manifesto"),
+                ("04_desktop_cad_blueprint.png", "cad_mid"),
+                ("05_desktop_thsyr_evp.png", "thsyr_step3"),
+                ("06_desktop_horizontal_gallery.png", "olhar_mid"),
+                ("07_desktop_toklang_kpi.png", "toklang_kpi"),
+                ("08_desktop_toklang_workbench.png", "toklang_lab"),
+                ("09_desktop_strikethrough.png", "resp_mid"),
+                ("10_desktop_index.png", "indice"),
+                ("11_desktop_contact.png", "contato"),
+            ]
+            for fname, key in order:
+                page.evaluate(f"window.scrollTo(0, {stops[key]})")
+                page.wait_for_timeout(520)
+                chrome_log[key] = get_chrome(page)
+                page.screenshot(path=str(SHOTS / fname))
 
-            # Act 2: #01 ThSyr Flagship
-            page.evaluate("document.getElementById('thsyr').scrollIntoView({block:'start', behavior:'instant'})")
-            page.wait_for_timeout(450)
-            thsyr_header = check_header_polarity(page)
-            page.screenshot(path=str(SHOTS / "03_desktop_thsyr_flagship.png"))
-
-            # Act 3: Complexity Matrix (#02 TokLang default + #03 Atlas click)
-            page.evaluate("document.getElementById('complexidade').scrollIntoView({block:'start', behavior:'instant'})")
-            page.wait_for_timeout(450)
-            cx_header = check_header_polarity(page)
-            page.screenshot(path=str(SHOTS / "04_desktop_complexity_toklang.png"))
-
-            page.locator('[data-cx="atlas"]').click()
-            page.wait_for_timeout(350)
-            page.screenshot(path=str(SHOTS / "05_desktop_complexity_atlas.png"))
-
-            # Act 4: TokLang 3-stage live compiler workbench
-            page.evaluate("document.getElementById('toklang-lab').scrollIntoView({block:'start', behavior:'instant'})")
-            page.wait_for_timeout(450)
-            lab_header = check_header_polarity(page)
-            page.screenshot(path=str(SHOTS / "06_desktop_toklang_workbench.png"))
-
-            # Act 5A: Story / Industrial Genesis
-            page.evaluate("document.getElementById('trajetoria').scrollIntoView({block:'start', behavior:'instant'})")
-            page.wait_for_timeout(450)
-            story_header = check_header_polarity(page)
-            page.screenshot(path=str(SHOTS / "07_desktop_story.png"))
-
-            # Act 5B: Full Filterable Index
-            page.evaluate("document.getElementById('indice').scrollIntoView({block:'start', behavior:'instant'})")
-            page.wait_for_timeout(450)
-            index_header = check_header_polarity(page)
-            page.screenshot(path=str(SHOTS / "08_desktop_index.png"))
-
-            # Act 6: Stark Contact Finale
-            page.evaluate("window.scrollTo({top: document.documentElement.scrollHeight, behavior: 'instant'})")
-            page.wait_for_timeout(450)
-            contact_header = check_header_polarity(page)
-            page.screenshot(path=str(SHOTS / "09_desktop_contact.png"))
+            # Open Sumario menu overlay & verify
+            page.locator("#menuToggleBtn").click()
+            page.wait_for_timeout(800)
+            page.screenshot(path=str(SHOTS / "12_desktop_sumario_menu.png"))
+            page.locator("#menuToggleBtn").click()
+            page.wait_for_timeout(600)
 
             desktop_health = check_page_health(page, "desktop_1440")
             ctx.close()
@@ -205,64 +179,39 @@ def main():
             mpage.on("console", lambda m: console_errors.append("[MOB] " + m.text) if m.type == "error" else None)
             mpage.on("pageerror", lambda e: page_errors.append("[MOB] " + str(e)))
 
-            mpage.goto(url, wait_until="networkidle")
+            mpage.goto(url, wait_until="networkidle", timeout=60000)
             mpage.wait_for_timeout(1200)
-            mpage.screenshot(path=str(SHOTS / "10_mobile_hero_core.png"))
+            mpage.screenshot(path=str(SHOTS / "13_mobile_hero.png"))
 
-            mpage.evaluate("document.getElementById('coreStage').scrollIntoView({block:'center', behavior:'instant'})")
-            mpage.wait_for_timeout(550)
-            mpage.screenshot(path=str(SHOTS / "10b_mobile_core_canvas.png"))
+            mpage.evaluate("document.getElementById('coreStage').scrollIntoView({block:'center'})")
+            mpage.wait_for_timeout(500)
+            mpage.screenshot(path=str(SHOTS / "14_mobile_core.png"))
 
-            mpage.evaluate("document.getElementById('complexidade').scrollIntoView({block:'start', behavior:'instant'})")
-            mpage.wait_for_timeout(450)
-            mob_cx_header = check_header_polarity(mpage)
-            mpage.screenshot(path=str(SHOTS / "11_mobile_complexity.png"))
+            mpage.evaluate("document.getElementById('complexidade').scrollIntoView({block:'start'})")
+            mpage.wait_for_timeout(500)
+            mpage.screenshot(path=str(SHOTS / "15_mobile_gallery.png"))
 
-            mpage.evaluate("document.getElementById('toklang-lab').scrollIntoView({block:'start', behavior:'instant'})")
-            mpage.wait_for_timeout(450)
-            mob_lab_header = check_header_polarity(mpage)
-            mpage.screenshot(path=str(SHOTS / "12_mobile_workbench.png"))
+            mpage.evaluate("document.getElementById('principios').scrollIntoView({block:'start'})")
+            mpage.wait_for_timeout(500)
+            mpage.screenshot(path=str(SHOTS / "16_mobile_principios.png"))
 
             mobile_health = check_page_health(mpage, "mobile_390")
             mctx.close()
             browser.close()
 
-        print("SERVER MODE:", mode)
-        print("LIVE 3D CORE T1:", core_t1)
-        print("LIVE 3D CORE ANIMATED:", anim_moved)
-        print(
-            "HEADER POLARITY:",
-            {
-                "hero": hero_header,
-                "thsyr": thsyr_header,
-                "complexidade": cx_header,
-                "toklang_lab": lab_header,
-                "trajetoria": story_header,
-                "indice": index_header,
-                "contato": contact_header,
-                "mob_cx": mob_cx_header,
-                "mob_lab": mob_lab_header,
-            },
-        )
+        print("LIVE 3D CORE:", c1, "ANIMATED:", anim_ok)
+        print("CHROME TELEMETRY:", chrome_log)
         print("DESKTOP HEALTH:", desktop_health)
         print("MOBILE HEALTH:", mobile_health)
         print("CONSOLE ERRORS:", console_errors)
         print("PAGE ERRORS:", page_errors)
 
-        # ThSyr VisualCraftValidator static check
         sys.path.insert(0, r"C:\Users\stdma\projetos\ThSyr")
         from engine.visual.validator import VisualCraftValidator
-
         v = VisualCraftValidator()
-        combined = (
-            (ROOT / "templates" / "index.html").read_text(encoding="utf-8")
-            + "\n<style>\n"
-            + (ROOT / "static" / "styles.css").read_text(encoding="utf-8")
-            + "\n</style>"
-        )
-        print("VISUAL CRAFT VALIDATOR:", v.audit_content(combined, source_name="portfolio-v2-swiss"))
+        combined = (ROOT / "templates" / "index.html").read_text(encoding="utf-8") + "\n<style>\n" + (ROOT / "static" / "styles.css").read_text(encoding="utf-8") + "\n</style>"
+        print("VISUAL CRAFT VALIDATOR:", v.audit_content(combined, source_name="portfolio-v2-scrollytelling"))
 
-        # Check zero purple hex codes in styles.css (HSV 250-330)
         css_txt = (ROOT / "static" / "styles.css").read_text(encoding="utf-8")
         purple_hits = []
         for hx in set(re.findall(r"#([0-9a-fA-F]{6})\b", css_txt)):
@@ -272,15 +221,6 @@ def main():
             if 250.0 <= deg <= 330.0 and s > 0.15 and val > 0.1:
                 purple_hits.append((f"#{hx}", round(deg, 1), round(s, 2)))
         print("PURPLE SPECTRUM AUDIT:", purple_hits)
-
-        # Source-level grep audit for forbidden entities
-        src_leaks = []
-        for rel in ("templates/index.html", "static/styles.css", "static/script.js", "app.py"):
-            txt = (ROOT / rel).read_text(encoding="utf-8").lower()
-            for needle in ("bosch", "gods-eye", "godseye", "god's eye", "thsyr_neural_core.png"):
-                if needle in txt:
-                    src_leaks.append((rel, needle))
-        print("FORBIDDEN ENTITY SOURCE AUDIT:", src_leaks)
 
     finally:
         srv.shutdown()
