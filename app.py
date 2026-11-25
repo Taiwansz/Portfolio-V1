@@ -52,11 +52,11 @@ def sobre():
 
 @app.route('/projetos')
 def projetos():
-    return redirect(url_for('home') + '#projetos')
+    return redirect(url_for('home') + '#thsyr')
 
 @app.route('/portfolio')
 def portfolio():
-    return redirect(url_for('home') + '#projetos')
+    return redirect(url_for('home') + '#complexidade')
 
 @app.route('/projetos/taskflow')
 def taskflow():

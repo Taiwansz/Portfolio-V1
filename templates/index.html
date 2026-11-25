@@ -3,577 +3,320 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Matheus Sousa dos Santos — AI & Systems Engineer, HR Data Analyst I no Agibank. Criador do ThSyr, TokLang, God's Eye View, Atlas Engineering OS e Thallium Core Ledger.">
+  <meta name="description" content="Matheus Sousa dos Santos — AI & Systems Engineer, HR Data Analyst I no Agibank. Criador do ThSyr, TokLang, Atlas Engineering OS, ThAthena, Thallium Core Ledger e ThPay.">
   <title>Matheus Sousa — AI &amp; Systems Engineer</title>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/v2/monogram_m.png') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-  <!-- Global Scroll Progress Hairline -->
+  <!-- Scroll Reading Line -->
   <div id="topProgressBar" class="scroll-progress" aria-hidden="true"></div>
 
-  <!-- ACT 0: Cinematic Monogram Preloader + Satin Alabaster Curtain -->
-  <div id="preloader" class="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <img src="{{ url_for('static', filename='images/v2/monogram_m.png') }}" alt="" class="preloader-mark">
-      <div class="preloader-bar-track">
-        <div id="preloaderBar" class="preloader-bar-fill"></div>
+  <!-- Full-Width Architectural Header Rail (Original Swiss-Industrial Layout) -->
+  <header id="siteHeader" class="top-rail" role="banner">
+    <div class="rail-inner">
+      <a href="#hero" class="rail-brand" aria-label="Matheus Sousa Inicio">
+        <img src="{{ url_for('static', filename='images/v2/monogram_m.png') }}" alt="Monograma M" class="rail-mark">
+        <span class="rail-name">Matheus Sousa</span>
+        <span class="rail-handle">/ Taiwansz</span>
+      </a>
+
+      <nav class="rail-nav" aria-label="Navegacao principal">
+        <a href="#thsyr" class="rail-link" data-section="thsyr"><span class="rn">01</span> <span data-i18n="nav_thsyr">ThSyr</span></a>
+        <a href="#complexidade" class="rail-link" data-section="complexidade"><span class="rn">02</span> <span data-i18n="nav_rank">Complexidade</span></a>
+        <a href="#toklang-lab" class="rail-link" data-section="toklang-lab"><span class="rn">03</span> <span data-i18n="nav_compiler">TokLang</span></a>
+        <a href="#trajetoria" class="rail-link" data-section="trajetoria"><span class="rn">04</span> <span data-i18n="nav_story">Trajetória</span></a>
+        <a href="#indice" class="rail-link" data-section="indice"><span class="rn">05</span> <span data-i18n="nav_index">Índice</span></a>
+      </nav>
+
+      <div class="rail-actions">
+        <button id="langToggleBtn" class="rail-lang" type="button" aria-label="Alternar idioma">EN</button>
+        <a href="#contato" class="rail-cta" data-i18n="nav_contact">Contato</a>
       </div>
-      <span id="preloaderPct" class="preloader-pct">0%</span>
-    </div>
-    <div id="preloaderCurtain" class="preloader-curtain"></div>
-  </div>
-
-  <!-- Floating Liquid Glass Island Navigation -->
-  <header id="siteNav" class="nav-island" role="banner">
-    <a href="#hero" class="nav-brand" aria-label="Matheus Sousa Inicio">
-      <img src="{{ url_for('static', filename='images/v2/monogram_m.png') }}" alt="Monograma Matheus Sousa" class="nav-mark">
-      <span>Matheus Sousa</span>
-    </a>
-
-    <nav class="nav-links" aria-label="Navegacao principal">
-      <a href="#projetos" class="nav-link" data-section="projetos" data-i18n="nav_projects">Projetos</a>
-      <a href="#arquitetura" class="nav-link" data-section="arquitetura" data-i18n="nav_architecture">Laboratório</a>
-      <a href="#escopo" class="nav-link" data-section="escopo" data-i18n="nav_scope">Brief</a>
-      <a href="#trajetoria" class="nav-link" data-section="trajetoria" data-i18n="nav_story">Trajetória</a>
-      <a href="#arquivo" class="nav-link" data-section="arquivo" data-i18n="nav_archive">Índice</a>
-    </nav>
-
-    <div class="nav-right">
-      <button id="langToggleBtn" class="lang-toggle" type="button" aria-label="Alternar idioma">EN</button>
-      <a href="#contato" class="nav-cta-btn" data-i18n="nav_contact">Contato</a>
     </div>
   </header>
 
   <main>
-    <!-- ACT 1: Spatial Floating Engineering Hero -->
-    <section id="hero" class="hero-section">
-      <div class="hero-ambient" aria-hidden="true">
-        <canvas id="heroSynapseCanvas" class="hero-canvas"></canvas>
-        <div class="hero-orb hero-orb-gold"></div>
-        <div class="hero-orb hero-orb-teal"></div>
-        <div class="hero-grid-subtle"></div>
-      </div>
+    <!-- ACT 1: ASYMMETRIC SPLIT HERO + LIVE ANIMATED 3D GOLDEN THSYR NEURAL CORE -->
+    <section id="hero" class="hero-split">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
 
-      <!-- Real Studio Artifacts in Spatial Parallax -->
-      <div class="hero-float-layer" aria-hidden="true">
-        <figure class="hero-artifact art-tr" data-depth="28">
-          <img src="{{ url_for('static', filename='images/v2/thsyr_neural_core.png') }}" alt="Nucleo Neural 3D do ThSyr">
-        </figure>
-        <figure class="hero-artifact art-bl" data-depth="22">
-          <img src="{{ url_for('static', filename='images/v2/bosch_eva_cutout.png') }}" alt="Assistente 3D Bosch modelado em Blender MCP">
-        </figure>
-      </div>
+      <div class="container hero-split-grid">
+        <!-- Left Column: Swiss Editorial Thesis -->
+        <div class="hero-copy-col">
+          <div class="hero-kicker reveal-in">
+            <span class="kicker-rule"></span>
+            <span data-i18n="hero_kicker">AI &amp; SYSTEMS ENGINEER · INDAIATUBA / CAMPINAS</span>
+          </div>
 
-      <div class="hero-content">
-        <p class="hero-eyebrow reveal-hero" data-i18n="hero_eyebrow">INDAIATUBA · CAMPINAS · AI &amp; SYSTEMS ENGINEER</p>
-        <h1 class="hero-title reveal-hero">
-          <span data-i18n="hero_line1">Sistemas cognitivos.</span><br>
-          <span class="gold-gradient" data-i18n="hero_line2">Engenharia sem folga.</span>
-        </h1>
-        <p class="hero-subtitle reveal-hero" data-i18n="hero_sub">
-          HR Data Analyst I no Agibank e graduando em Ciência da Computação (UniMAX '27). Projeto runtimes multiagentes, compiladores de contexto para LLMs e software com rigor de usinagem.
-        </p>
+          <h1 class="hero-headline reveal-in">
+            <span data-i18n="hero_l1">Sistemas cognitivos.</span><br>
+            <span class="gold-ink" data-i18n="hero_l2">Engenharia sem folga.</span>
+          </h1>
 
-        <div class="hero-actions reveal-hero">
-          <a href="#projetos" class="btn-primary-light" data-i18n="hero_cta1">Explorar ThSyr #01</a>
-          <a href="#arquitetura" class="btn-glass-dark" data-i18n="hero_cta2">Abrir laboratório vivo</a>
+          <p class="hero-lead reveal-in" data-i18n="hero_lead">
+            HR Data Analyst I no Agibank e graduando em Ciência da Computação (UniMAX '27). Projeto runtimes multiagentes em Python, compiladores determinísticos para LLMs e software com tolerância de usinagem.
+          </p>
+
+          <div class="hero-cta-row reveal-in">
+            <a href="#thsyr" class="btn-solid-gold" data-i18n="hero_cta1">Explorar ThSyr #01 &rarr;</a>
+            <a href="#toklang-lab" class="btn-line-dark" data-i18n="hero_cta2">Testar compilador TokLang</a>
+          </div>
+
+          <dl class="hero-telemetry reveal-in">
+            <div>
+              <dt>206</dt>
+              <dd data-i18n="t_mod">módulos no engine ThSyr</dd>
+            </div>
+            <div>
+              <dt>96,6%</dt>
+              <dd data-i18n="t_ast">tipagem estrita AST</dd>
+            </div>
+            <div>
+              <dt>-56,2%</dt>
+              <dd data-i18n="t_tok">tokens no TokLang</dd>
+            </div>
+            <div>
+              <dt>3.972+</dt>
+              <dd data-i18n="t_nod">nós no grafo neural</dd>
+            </div>
+          </dl>
         </div>
 
-        <div class="hero-metrics reveal-hero">
-          <div class="metric-cell">
-            <strong>206</strong>
-            <span data-i18n="m_modules">módulos no core ThSyr</span>
-          </div>
-          <div class="metric-cell">
-            <strong>96,6%</strong>
-            <span data-i18n="m_typed">cobertura de tipagem AST</span>
-          </div>
-          <div class="metric-cell">
-            <strong>56,2%</strong>
-            <span data-i18n="m_tokens">menos tokens no TokLang</span>
-          </div>
-          <div class="metric-cell">
-            <strong>3.972+</strong>
-            <span data-i18n="m_nodes">nós no grafo sináptico</span>
+        <!-- Right Column: LIVE ANIMATED 3D GOLDEN NEURAL CORE (INTERACTIVE CANVAS 60FPS) -->
+        <div class="hero-core-col reveal-in">
+          <div class="core-stage" id="coreStage">
+            <div class="core-canvas-wrap">
+              <canvas id="thsyrLiveCore" width="640" height="580" aria-label="Nucleo Neural 3D animado do ThSyr com 5 lobos cerebrais"></canvas>
+            </div>
+
+            <div class="core-hud-bottom">
+              <div class="core-lobe-pills" role="radiogroup" aria-label="Ativar lobo cerebral no nucleo 3D">
+                <button type="button" class="core-lobe-btn is-active" data-core-lobe="all">Todos</button>
+                <button type="button" class="core-lobe-btn" data-core-lobe="frontal">Frontal</button>
+                <button type="button" class="core-lobe-btn" data-core-lobe="parietal">Parietal</button>
+                <button type="button" class="core-lobe-btn" data-core-lobe="temporal">Temporal</button>
+                <button type="button" class="core-lobe-btn" data-core-lobe="occipital">Occipital</button>
+                <button type="button" class="core-lobe-btn" data-core-lobe="limbico">Límbico</button>
+              </div>
+              <div class="core-readout">
+                <span id="coreLobeReadout">Núcleo Holográfico ThSyr · arraste para orbitar em 3D</span>
+                <span class="core-counts">3.972 nós &middot; 38.126 sinapses</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="seam-curve-dark-to-light" aria-hidden="true">
-        <svg viewBox="0 0 1440 84" preserveAspectRatio="none">
-          <path d="M0,84 L0,24 Q720,96 1440,24 L1440,84 Z" fill="#F5F4F0"></path>
-        </svg>
       </div>
     </section>
 
-    <!-- ACT 2: Flagship #01 ThSyr Throne + Proprietary Complexity Bento Grid -->
-    <section id="projetos" class="bento-section">
-      <div class="container">
-        <div class="section-header-row">
-          <div>
-            <p class="eyebrow-dark" data-i18n="rank_eyebrow">RANKING POR COMPLEXIDADE ARQUITETURAL</p>
-            <h2 class="section-title-dark" data-i18n="rank_title">Do núcleo cognitivo<br>à interface de precisão.</h2>
+    <!-- ACT 2: FLAGSHIP #01 THSYR — EDITORIAL ARCHITECTURAL DISSECTION -->
+    <section id="thsyr" class="flagship-section">
+      <div class="container flagship-layout">
+        <!-- Left Sticky Thesis Column -->
+        <div class="flagship-sticky">
+          <div class="index-badge">
+            <span class="idx-num">01</span>
+            <span class="idx-label" data-i18n="thsyr_tag">PROJETO PRINCIPAL · COMPLEXIDADE MÁXIMA</span>
           </div>
-          <a href="#arquivo" class="text-arrow-link" data-i18n="rank_link">
-            Ver índice completo (12 obras) <span aria-hidden="true">&rarr;</span>
-          </a>
+          <h2 class="section-h2">ThSyr</h2>
+          <p class="section-lead" data-i18n="thsyr_lead">
+            Meu sistema operacional cognitivo pessoal. Construído do zero para resolver os três colapsos estruturais de agentes de IA: amnésia entre sessões, bajulação (sycophancy) e alucinação arquitetural.
+          </p>
+
+          <div class="flagship-stat-grid">
+            <div class="fstat"><strong>206</strong><span>módulos em Python</span></div>
+            <div class="fstat"><strong>77</strong><span>suítes pytest verdes</span></div>
+            <div class="fstat"><strong>96,6%</strong><span>tipagem estrita AST</span></div>
+            <div class="fstat"><strong>5 lobos</strong><span>memória persistente</span></div>
+          </div>
+
+          <div class="flagship-links">
+            <a href="https://github.com/Taiwansz/ThSyr" target="_blank" rel="noopener noreferrer" class="btn-solid-ink">Repositório GitHub &rarr;</a>
+            <button type="button" class="btn-line-ink" data-open-dossier="thsyr" data-i18n="btn_full_xray">Dossiê completo</button>
+          </div>
         </div>
 
-        <!-- #01 FLAGSHIP MONOLITH: THSYR -->
-        <article class="flagship-card" data-open-dossier="thsyr">
-          <div class="flagship-left">
-            <div class="tier-row">
-              <span class="tier-num">01</span>
-              <span class="tier-label" data-i18n="tier_s">PROJETO PRINCIPAL · COMPLEXIDADE MÁXIMA</span>
+        <!-- Right Column: 3 Architectural Pillars (Editorial Stack) -->
+        <div class="flagship-pillars">
+          <article class="pillar-card">
+            <div class="pillar-head">
+              <span class="pillar-idx">CAMADA 01</span>
+              <span class="pillar-tech">GraphRAG · RRF · Spreading Activation</span>
             </div>
-            <h3 class="flagship-title">ThSyr</h3>
-            <p class="flagship-desc" data-i18n="thsyr_desc">
-              Sistema operacional cognitivo multiagente em Python e TypeScript. Combina um grafo neural de 5 lobos com busca híbrida RRF, ativação por espalhamento, córtex pré-frontal anti-alucinação, 77 suítes de testes e Desktop Control Center nativo em React 18 + Three.js.
+            <h3>Memória Neural em 5 Lobos</h3>
+            <p>
+              Conhecimento estruturado entre Frontal, Parietal, Temporal, Occipital e Límbico, indexado em grafo de 3.972+ nós e 38.126+ sinapses com recuperação híbrida (Reciprocal Rank Fusion) e ativação por espalhamento.
             </p>
-            <div class="flagship-specs">
-              <div class="spec-chip"><strong>206</strong><span>módulos engine</span></div>
-              <div class="spec-chip"><strong>38.126+</strong><span>sinapses ativas</span></div>
-              <div class="spec-chip"><strong>77</strong><span>suítes pytest</span></div>
-              <div class="spec-chip"><strong>96,6%</strong><span>tipagem AST</span></div>
-            </div>
-            <div class="flagship-actions">
-              <button type="button" class="btn-gold-solid" data-open-dossier="thsyr" data-i18n="open_xray">Abrir Raio-X &rarr;</button>
-              <a href="https://github.com/Taiwansz/ThSyr" target="_blank" rel="noopener noreferrer" class="btn-outline-light" onclick="event.stopPropagation()">GitHub</a>
-            </div>
-          </div>
-
-          <div class="flagship-visual" aria-hidden="true">
-            <div class="flagship-glow"></div>
-            <img src="{{ url_for('static', filename='images/v2/thsyr_neural_core.png') }}" alt="Nucleo Neural 3D do ThSyr">
-          </div>
-        </article>
-
-        <!-- #02 to #07 COMPLEXITY-RANKED BENTO MATRIX -->
-        <div class="bento-grid">
-          <!-- #02 TokLang (Tall Left Anchor — Spans 2 Rows) -->
-          <article class="bento-card bento-tall tone-verdigris" data-open-dossier="toklang">
-            <div class="bento-top">
-              <span class="bento-meta">02 · COMPILADORES &amp; LLMs · TCC</span>
-              <h3 class="bento-title">TokLang</h3>
-              <p class="bento-one-liner" data-i18n="toklang_short">
-                Compilador determinístico LL(1) que corta 56,2% dos tokens e 80,7% dos FLOPs de atenção em cluster NVIDIA A100.
-              </p>
-            </div>
-            <div class="bento-code-sculpture" aria-hidden="true">
-              <div class="sculpture-row">
-                <span class="sc-tag">INPUT</span>
-                <code>1.240 tokens · 100% baseline</code>
-              </div>
-              <div class="sculpture-arrow">&darr; Lexer &middot; AST LL(1) &middot; Shannon Entropy</div>
-              <div class="sculpture-row is-accent">
-                <span class="sc-tag">TOKLANG</span>
-                <code>543 tokens &middot; -56,2% &middot; 574ms TTFT</code>
-              </div>
-              <div class="sculpture-bars">
-                <div class="sbar-track"><span style="width:100%"></span></div>
-                <div class="sbar-track is-compressed"><span style="width:43.8%"></span></div>
-              </div>
-            </div>
-            <div class="bento-footer">
-              <button type="button" class="bento-cta" data-scroll-lab="toklang" data-i18n="try_compiler">Testar compilador &rarr;</button>
-            </div>
+            <div class="pillar-file">engine/neural_retriever.py &middot; knowledge_graph.json</div>
           </article>
 
-          <!-- #03 God's Eye View -->
-          <article class="bento-card tone-obsidian" data-open-dossier="godseye">
-            <div class="bento-top">
-              <span class="bento-meta">03 · TELEMETRIA ORBITAL 3D &amp; GLSL</span>
-              <h3 class="bento-title">God's Eye View</h3>
-              <p class="bento-one-liner" data-i18n="godseye_short">
-                Rastreamento planetário ao vivo: voos ADS-B, navios AIS, satélites SGP4 e sismologia USGS.
-              </p>
+          <article class="pillar-card">
+            <div class="pillar-head">
+              <span class="pillar-idx">CAMADA 02</span>
+              <span class="pillar-tech">Deterministic Guardrails · AST</span>
             </div>
-            <div class="bento-radar-svg" aria-hidden="true">
-              <svg viewBox="0 0 260 150" fill="none">
-                <circle cx="168" cy="84" r="64" stroke="rgba(200,181,96,0.22)" stroke-width="1"/>
-                <circle cx="168" cy="84" r="44" stroke="rgba(46,125,139,0.34)" stroke-width="1" stroke-dasharray="3 4"/>
-                <ellipse cx="168" cy="84" rx="82" ry="24" transform="rotate(-18 168 84)" stroke="rgba(200,181,96,0.5)" stroke-width="1.2"/>
-                <ellipse cx="168" cy="84" rx="76" ry="20" transform="rotate(28 168 84)" stroke="rgba(96,178,192,0.45)" stroke-width="1"/>
-                <circle cx="122" cy="64" r="3.5" fill="#C8B560"/>
-                <circle cx="218" cy="96" r="3" fill="#5CB8C9"/>
-                <circle cx="162" cy="40" r="2.8" fill="#F5F4F0"/>
-              </svg>
-            </div>
-            <div class="bento-footer">
-              <button type="button" class="bento-cta" data-scroll-lab="godseye" data-i18n="open_globe">Abrir globo 3D &rarr;</button>
-            </div>
-          </article>
-
-          <!-- #04 Atlas Engineering OS -->
-          <article class="bento-card tone-pine" data-open-dossier="atlas">
-            <div class="bento-top">
-              <span class="bento-meta">04 · GOVERNANÇA AST &amp; SAAS</span>
-              <h3 class="bento-title">Atlas OS</h3>
-            </div>
-            <div class="bento-media-device">
-              <img src="{{ url_for('static', filename='images/v2/atlas_tablet.jpg') }}" alt="Atlas Engineering OS AST Drift Graph">
-            </div>
-            <div class="bento-footer">
-              <button type="button" class="bento-cta" data-open-dossier="atlas" data-i18n="inspect">Inspecionar &rarr;</button>
-            </div>
-          </article>
-
-          <!-- #05 Thallium Core Ledger -->
-          <article class="bento-card tone-bronze" data-open-dossier="thallium">
-            <div class="bento-top">
-              <span class="bento-meta">05 · CORE CONTÁBIL · DOUBLE-ENTRY</span>
-              <h3 class="bento-title">Thallium</h3>
-            </div>
-            <div class="bento-media-device">
-              <img src="{{ url_for('static', filename='images/v2/thallium_tablet.jpg') }}" alt="Thallium Core Ledger">
-            </div>
-            <div class="bento-footer">
-              <button type="button" class="bento-cta" data-open-dossier="thallium" data-i18n="inspect">Inspecionar &rarr;</button>
-            </div>
-          </article>
-
-          <!-- #06 ThPay -->
-          <article class="bento-card tone-bone" data-open-dossier="thpay">
-            <div class="bento-top">
-              <span class="bento-meta">06 · FOLHA CONTÍNUA &amp; ICP-BRASIL</span>
-              <h3 class="bento-title">ThPay</h3>
-            </div>
-            <div class="bento-media-device">
-              <img src="{{ url_for('static', filename='images/v2/thpay_ui.jpg') }}" alt="ThPay Executive Payroll Dashboard">
-            </div>
-            <div class="bento-footer">
-              <button type="button" class="bento-cta bento-cta-dark" data-open-dossier="thpay" data-i18n="inspect">Inspecionar &rarr;</button>
-            </div>
-          </article>
-        </div>
-
-        <!-- #07 Visual & 3D Craft Strip (Full-Width Horizontal Showcase) -->
-        <article class="craft-strip" data-open-dossier="bosch3d">
-          <div class="craft-strip-copy">
-            <span class="bento-meta-dark">07 · MODELAGEM 3D BLENDER MCP &amp; MOTION WEB</span>
-            <h3 class="craft-strip-title">Bosch EVA 3D &amp; Interfaces Cinéticas</h3>
-            <p class="craft-strip-desc" data-i18n="bosch_desc">
-              Assistente 3D estilo EVA esculpido em 6 ciclos via Blender MCP (empacotado standalone gzip + base64), simuladores executivos ao vivo e vitrines web com GSAP ScrollTrigger e cutouts de estúdio.
+            <h3>Córtex Pré-Frontal &amp; Rigor Epistêmico</h3>
+            <p>
+              Portões determinísticos em software que auditam premissas, impedem violações de invariantes reais, combatem bajulação e mantêm memória escopada de preferências e falhas sem vazar contexto entre projetos.
             </p>
-            <button type="button" class="bento-cta bento-cta-dark" data-open-dossier="bosch3d" data-i18n="open_xray">Abrir Raio-X &rarr;</button>
-          </div>
-          <div class="craft-strip-visuals">
-            <img src="{{ url_for('static', filename='images/v2/bosch_eva_cutout.png') }}" alt="Robo 3D EVA modelado no Blender MCP" class="craft-eva-img">
-            <img src="{{ url_for('static', filename='images/v2/apple_craft.jpg') }}" alt="Apple Showcase 6 Atos" class="craft-apple-img">
-          </div>
-        </article>
-      </div>
-    </section>
+            <div class="pillar-file">engine/prefrontal_cortex.py &middot; engine/operator_intelligence.py</div>
+          </article>
 
-    <!-- ACT 3: SIGNATURE TOY #1 — Chameleon Architecture Deep-Dive Lab -->
-    <section id="arquitetura" class="lab-stage" data-theme="dark">
-      <div class="lab-aura" id="labAura" aria-hidden="true"></div>
-      <div class="container">
-        <div class="lab-top-row">
-          <div>
-            <p class="eyebrow-adaptive" data-i18n="lab_eyebrow">LABORATÓRIO INTERATIVO · PROVA REAL</p>
-            <h2 class="lab-section-title" data-i18n="lab_title">Não acredite em resumo.<br>Inspecione o motor rodando.</h2>
-          </div>
-
-          <!-- 4-System Chameleon Switcher -->
-          <div class="lab-switcher" role="tablist" aria-label="Sistemas no laboratorio">
-            <button type="button" class="lab-tab is-active" data-lab="thsyr" role="tab" aria-selected="true">01 · ThSyr</button>
-            <button type="button" class="lab-tab" data-lab="toklang" role="tab" aria-selected="false">02 · TokLang</button>
-            <button type="button" class="lab-tab" data-lab="godseye" role="tab" aria-selected="false">03 · God's Eye</button>
-            <button type="button" class="lab-tab" data-lab="atlas" role="tab" aria-selected="false">04 · Atlas</button>
-          </div>
-        </div>
-
-        <!-- Interactive Stage Panels -->
-        <div class="lab-panels">
-          <!-- PANEL 1: ThSyr 5-Lobe Interactive Cognitive Core -->
-          <div class="lab-panel is-active" data-lab-panel="thsyr">
-            <div class="lab-panel-grid">
-              <div class="lab-visual-box thsyr-stage-box">
-                <div class="hang-tag-wrap" aria-hidden="true">
-                  <div class="hang-string"></div>
-                  <div class="hang-tag">
-                    <span class="hang-tag-eyebrow">GRAPH TOPOLOGY</span>
-                    <strong>3.972 nós</strong>
-                    <span class="hang-tag-sub">38.126 sinapses</span>
-                  </div>
-                </div>
-                <img src="{{ url_for('static', filename='images/v2/thsyr_neural_core.png') }}" alt="Nucleo Neural 3D ThSyr" class="lab-core-img" id="thsyrCoreImg">
-              </div>
-
-              <div class="lab-control-box">
-                <span class="lab-kicker">COGNITIVE RUNTIME · PYTHON + REACT 18 + THREE.JS</span>
-                <h3 id="lobeTitle" class="lab-heading">Lobo Frontal — Inibição Pré-Frontal</h3>
-                <p id="lobeDesc" class="lab-copy">
-                  Portão determinístico anti-sicofancia e proteção de invariantes reais. Bloqueia premissas frágeis, alucinações e violações de arquitetura antes de qualquer execução em disco.
-                </p>
-
-                <div class="lobe-selector" role="radiogroup" aria-label="Lobos cerebrais do ThSyr">
-                  <button type="button" class="lobe-btn is-active" data-lobe="frontal">Frontal</button>
-                  <button type="button" class="lobe-btn" data-lobe="parietal">Parietal</button>
-                  <button type="button" class="lobe-btn" data-lobe="temporal">Temporal</button>
-                  <button type="button" class="lobe-btn" data-lobe="occipital">Occipital</button>
-                  <button type="button" class="lobe-btn" data-lobe="limbico">Límbico</button>
-                </div>
-
-                <div class="lobe-telemetry-card">
-                  <div>
-                    <span class="tel-label">Módulos primários</span>
-                    <strong id="lobeModules">prefrontal_cortex.py · epistemic_rigor.py</strong>
-                  </div>
-                  <div>
-                    <span class="tel-label">Função no pipeline</span>
-                    <strong id="lobeRole">Veto lógico &amp; validação de restrições</strong>
-                  </div>
-                </div>
-              </div>
+          <article class="pillar-card">
+            <div class="pillar-head">
+              <span class="pillar-idx">CAMADA 03</span>
+              <span class="pillar-tech">React 18 · TypeScript · Three.js · WebView2</span>
             </div>
-          </div>
-
-          <!-- PANEL 2: TokLang LIVE Deterministic Prompt Compressor -->
-          <div class="lab-panel" data-lab-panel="toklang">
-            <div class="toklang-shell">
-              <div class="toklang-head">
-                <div>
-                  <span class="lab-kicker">COMPILADOR LL(1) · ENTROPIA DE SHANNON · REVERSÍVEL</span>
-                  <h3 class="lab-heading">Teste a compressão TokLang ao vivo</h3>
-                </div>
-                <div class="toklang-presets">
-                  <button type="button" class="preset-btn is-active" data-preset="rag">Contexto RAG</button>
-                  <button type="button" class="preset-btn" data-preset="api">Spec de API</button>
-                  <button type="button" class="preset-btn" data-preset="agent">Prompt Multiagente</button>
-                </div>
-              </div>
-
-              <div class="toklang-io-grid">
-                <div class="toklang-box">
-                  <div class="toklang-box-bar">
-                    <span>Entrada (Linguagem Natural)</span>
-                    <strong id="tokInputCount">0 tokens</strong>
-                  </div>
-                  <textarea id="tokInput" rows="6" spellcheck="false" aria-label="Texto de entrada para compressao TokLang"></textarea>
-                </div>
-
-                <div class="toklang-box is-output">
-                  <div class="toklang-box-bar">
-                    <span>Saída Compilada (TokLang AST)</span>
-                    <strong id="tokOutputCount">0 tokens</strong>
-                  </div>
-                  <pre id="tokOutput" class="toklang-output"></pre>
-                </div>
-              </div>
-
-              <div class="toklang-stats-bar">
-                <div class="tok-stat">
-                  <span>Redução medida aqui</span>
-                  <strong id="tokReductionPct">0%</strong>
-                </div>
-                <div class="tok-stat">
-                  <span>Economia estimada em atenção O(n&sup2;)</span>
-                  <strong id="tokFlopsPct">0%</strong>
-                </div>
-                <div class="tok-stat">
-                  <span>Benchmark TCC (NVIDIA A100)</span>
-                  <strong>56,2% tokens &middot; 574ms TTFT</strong>
-                </div>
-                <button type="button" id="tokCompileBtn" class="btn-buy-adaptive">Compilar agora</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- PANEL 3: God's Eye View LIVE 60fps Geodetic Orbital Canvas -->
-          <div class="lab-panel" data-lab-panel="godseye">
-            <div class="lab-panel-grid">
-              <div class="lab-visual-box globe-box">
-                <canvas id="orbitalCanvas" width="540" height="420" aria-label="Simulacao orbital SGP4 e rotas ADS-B"></canvas>
-              </div>
-
-              <div class="lab-control-box">
-                <span class="lab-kicker">TELEMETRIA PLANETÁRIA · ADS-B · AIS · SGP4 · USGS</span>
-                <h3 class="lab-heading">Percepção orbital em tempo real</h3>
-                <p class="lab-copy">
-                  Motor de ingestão e renderização geoespacial integrado ao ecossistema ThSyr. Ative e desative camadas de telemetria sobre o globo geodésico em tempo real.
-                </p>
-
-                <div class="layer-toggles">
-                  <button type="button" class="layer-btn is-on" data-layer="sgp4">Satélites SGP4</button>
-                  <button type="button" class="layer-btn is-on" data-layer="adsb">Rotas ADS-B</button>
-                  <button type="button" class="layer-btn is-on" data-layer="ais">Tráfego AIS</button>
-                  <button type="button" class="layer-btn is-on" data-layer="usgs">Sismos USGS</button>
-                </div>
-
-                <div class="lobe-telemetry-card">
-                  <div>
-                    <span class="tel-label">Camadas ativas</span>
-                    <strong id="globeActiveLayers">4 / 4 sensores</strong>
-                  </div>
-                  <div>
-                    <span class="tel-label">Stack</span>
-                    <strong>TypeScript &middot; Three.js / GLSL &middot; SGP4</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- PANEL 4: Atlas Engineering OS & Thallium Invariants -->
-          <div class="lab-panel" data-lab-panel="atlas">
-            <div class="lab-panel-grid">
-              <div class="lab-visual-box device-showcase-box">
-                <img id="atlasStageImg" src="{{ url_for('static', filename='images/v2/atlas_tablet.jpg') }}" alt="Atlas Engineering OS">
-              </div>
-
-              <div class="lab-control-box">
-                <span class="lab-kicker" id="atlasKicker">TYPESCRIPT · NEXT.JS · AST · ZOD</span>
-                <h3 class="lab-heading" id="atlasHeading">Atlas Engineering OS</h3>
-                <p class="lab-copy" id="atlasDesc">
-                  Governança estática para código produzido por agentes de IA. Analisa árvores AST para bloquear violações arquiteturais, dependências cíclicas e deriva silenciosa antes do merge.
-                </p>
-
-                <div class="lobe-selector">
-                  <button type="button" class="lobe-btn is-active" data-sys-view="atlas">Atlas AST Auditor</button>
-                  <button type="button" class="lobe-btn" data-sys-view="thallium">Thallium Core Ledger</button>
-                </div>
-
-                <div class="lobe-telemetry-card">
-                  <div>
-                    <span class="tel-label">Invariante central</span>
-                    <strong id="atlasInvariant">Zero architectural drift em CI/CD</strong>
-                  </div>
-                  <div>
-                    <span class="tel-label">Acesso</span>
-                    <a id="atlasRepoLink" href="https://atlas-landing-page.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-gold-link">atlas-landing-page.vercel.app &rarr;</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            <h3>Desktop Control Center &amp; Visual Quality Loop</h3>
+            <p>
+              Interface nativa empacotada com visualização 3D do grafo neural em tempo real (reproduzida ao vivo na abertura desta página), orquestração multiagente concorrente e auditoria visual fechada via Playwright.
+            </p>
+            <div class="pillar-file">desktop/src/features/neural-core/NeuralCore.tsx &middot; engine/visual/</div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ACT 4: SIGNATURE TOY #2 — Interactive Engineering Brief Chassis (4 Bays + Auto Seal) -->
-    <section id="escopo" class="kit-section">
+    <!-- ACT 3: COMPLEXITY MATRIX (#02 -> #07) — ORIGINAL MASTER-DETAIL INSPECTOR -->
+    <section id="complexidade" class="matrix-section">
       <div class="container">
-        <div class="kit-header">
+        <div class="matrix-header">
           <div>
-            <p class="eyebrow-dark" data-i18n="brief_eyebrow">CONTRATAÇÃO &amp; DESAFIO TÉCNICO</p>
-            <h2 class="section-title-dark" data-i18n="brief_title">Monte o stack que seu time precisa</h2>
+            <span class="eyebrow-mono" data-i18n="rank_kicker">02 &mdash; 07 · PROJETOS AUTORAIS POR COMPLEXIDADE</span>
+            <h2 class="section-h2" data-i18n="rank_h2">Cada sistema ranqueado pelo<br>peso real de engenharia.</h2>
           </div>
-          <p class="kit-lead" data-i18n="brief_lead">
-            Recrutador ou Engineering Manager? Selecione <strong>4 frentes de engenharia</strong> abaixo. Ao completar os 4 compartimentos, o chassi lacra com o resumo técnico pronto para enviar ou agendar entrevista.
+          <p class="matrix-note" data-i18n="rank_note">
+            Apenas repositórios de autoria própria. Selecione qualquer linha para inspecionar arquitetura, métricas verificadas e links de código.
           </p>
         </div>
 
-        <div class="kit-workspace">
-          <div id="capPickerGrid" class="kit-picker-grid"></div>
+        <div class="matrix-workspace">
+          <!-- Left: Ranked Architectural Ledger List -->
+          <div id="complexityList" class="complexity-list" role="tablist" aria-label="Lista de projetos ordenados por complexidade"></div>
 
-          <aside class="kit-case-col" aria-label="Chassi de escopo tecnico">
-            <div id="briefCase" class="kit-case">
-              <div class="kit-case-head">
-                <div>
-                  <h3 class="kit-case-title">Chassi Técnico</h3>
-                  <p class="kit-case-sub">4 módulos · CLT RMC/Remoto ou USD</p>
-                </div>
-                <button type="button" id="clearBriefBtn" class="kit-clear-btn">Limpar</button>
-              </div>
-
-              <div class="kit-bays-wrapper">
-                <div id="briefBays" class="kit-bays">
-                  <button type="button" class="kit-bay" data-slot="0" aria-label="Compartimento 1 vazio"></button>
-                  <button type="button" class="kit-bay" data-slot="1" aria-label="Compartimento 2 vazio"></button>
-                  <button type="button" class="kit-bay" data-slot="2" aria-label="Compartimento 3 vazio"></button>
-                  <button type="button" class="kit-bay" data-slot="3" aria-label="Compartimento 4 vazio"></button>
-                </div>
-
-                <!-- Sliding Satin Champagne-Obsidian Sovereign Seal (Locks on 4/4) -->
-                <div id="briefLid" class="kit-lid" aria-hidden="true">
-                  <div class="kit-lid-surface">
-                    <div class="kit-lid-band"></div>
-                    <img src="{{ url_for('static', filename='images/v2/monogram_m.png') }}" alt="" class="kit-lid-mark">
-                    <span class="kit-lid-engrave">MATHEUS SOUSA · ARCHITECTURE BRIEF</span>
-                    <div class="kit-lid-seal">
-                      <span class="seal-dot"></span>
-                      <span id="sealedRoleLabel">AI &amp; Systems Engineer · Homologado</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="kit-summary">
-                <div class="kit-status-line">
-                  <span id="briefProgressText">0 de 4 módulos · faltam 4</span>
-                  <span id="briefFitLabel" class="kit-discount-note"></span>
-                </div>
-                <div class="kit-total-row">
-                  <div>
-                    <div id="briefProfileTitle" class="kit-total-value">Selecione a stack</div>
-                    <span class="kit-total-caption">Alinhamento de perfil em tempo real</span>
-                  </div>
-                  <div class="kit-cta-group">
-                    <button type="button" id="copyBriefBtn" class="btn-kit-submit" disabled>Copiar brief</button>
-                    <button type="button" id="reopenBriefBtn" class="btn-kit-reopen" hidden>Montar outro</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
+          <!-- Right: Live Architectural Inspector Card -->
+          <aside id="complexityInspector" class="complexity-inspector" aria-live="polite"></aside>
         </div>
       </div>
     </section>
 
-    <!-- ACT 5A: Trajectory & Industrial Genesis -->
+    <!-- ACT 4: DEDICATED TOKLANG 3-STAGE LIVE COMPILER WORKBENCH -->
+    <section id="toklang-lab" class="workbench-section">
+      <div class="container">
+        <div class="workbench-top">
+          <div>
+            <span class="eyebrow-gold" data-i18n="wb_kicker">PROVA INTERATIVA · PROJETO #02 (TCC)</span>
+            <h2 class="section-h2-light" data-i18n="wb_h2">Compilador TokLang ao vivo.</h2>
+          </div>
+          <div class="wb-presets" role="group" aria-label="Exemplos de entrada para TokLang">
+            <button type="button" class="wb-preset is-active" data-preset="rag">Contexto RAG</button>
+            <button type="button" class="wb-preset" data-preset="api">Spec PostgreSQL / RLS</button>
+            <button type="button" class="wb-preset" data-preset="agent">Governança AST</button>
+          </div>
+        </div>
+
+        <div class="workbench-grid">
+          <!-- Stage 1: Raw Input -->
+          <div class="wb-pane">
+            <div class="wb-pane-bar">
+              <span>01 · ENTRADA NATURAL</span>
+              <strong id="tokInputCount">0 tokens</strong>
+            </div>
+            <textarea id="tokInput" rows="7" spellcheck="false" aria-label="Entrada de texto para o compilador TokLang"></textarea>
+          </div>
+
+          <!-- Stage 2: Entropy Pruning Visualizer (Pruned vs Protected) -->
+          <div class="wb-pane is-middle">
+            <div class="wb-pane-bar">
+              <span>02 · PODA POR ENTROPIA</span>
+              <strong id="tokKeptCount">0 preservados</strong>
+            </div>
+            <div id="tokTokenDiff" class="wb-diff-view"></div>
+          </div>
+
+          <!-- Stage 3: Compiled Reversible TokLang AST -->
+          <div class="wb-pane is-output">
+            <div class="wb-pane-bar">
+              <span>03 · SAÍDA TOKLANG AST</span>
+              <strong id="tokOutputCount">0 tokens</strong>
+            </div>
+            <pre id="tokOutput" class="wb-code-out"></pre>
+          </div>
+        </div>
+
+        <div class="workbench-metrics">
+          <div class="wb-metric">
+            <span>Redução neste prompt</span>
+            <strong id="tokReductionPct">-0.0%</strong>
+          </div>
+          <div class="wb-metric">
+            <span>Economia em atenção O(n&sup2;)</span>
+            <strong id="tokFlopsPct">-0.0%</strong>
+          </div>
+          <div class="wb-metric">
+            <span>Benchmark empírico TCC (NVIDIA A100)</span>
+            <strong>-56,2% tokens &middot; -80,7% FLOPs &middot; 574 ms TTFT</strong>
+          </div>
+          <div class="wb-metric-actions">
+            <button type="button" id="tokCopyBtn" class="btn-solid-gold">Copiar AST</button>
+            <a href="https://github.com/Taiwansz/TCC-CIENCIAS-DA-COMPUTACAO-2026" target="_blank" rel="noopener noreferrer" class="btn-line-dark">Ver TCC &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 5A: TRAJECTORY & THE INDUSTRIAL GENESIS -->
     <section id="trajetoria" class="story-section">
       <div class="container story-grid">
-        <div class="story-portrait-col">
-          <div class="portrait-frame">
+        <div class="story-left">
+          <div class="portrait-wrap">
             <img src="{{ url_for('static', filename='images/v2/matheus_portrait.jpg') }}" alt="Matheus Sousa dos Santos">
           </div>
-          <div class="portrait-facts">
-            <div><span>Base</span><strong>Indaiatuba / Campinas, SP</strong></div>
-            <div><span>Formação</span><strong>Ciência da Computação · UniMAX '27</strong></div>
-            <div><span>Idiomas</span><strong>Português Nativo · Inglês Fluente</strong></div>
+          <div class="fact-sheet">
+            <div class="fact-row"><span>Localização</span><strong>Indaiatuba / Campinas, SP</strong></div>
+            <div class="fact-row"><span>Graduação</span><strong>Ciência da Computação · UniMAX '27</strong></div>
+            <div class="fact-row"><span>Atuação</span><strong>Agibank · HR Data Analyst I</strong></div>
+            <div class="fact-row"><span>Idiomas</span><strong>Português Nativo · Inglês Fluente</strong></div>
           </div>
         </div>
 
-        <div class="story-content-col">
-          <p class="eyebrow-dark" data-i18n="story_eyebrow">A GÊNESE INDUSTRIAL</p>
-          <h2 class="section-title-dark" data-i18n="story_title">Da tolerância de micrômetro<br>à engenharia de sistemas.</h2>
-          <p class="story-lead" data-i18n="story_lead">
-            Antes de escrever runtimes multiagentes e compiladores, operei máquinas operatrizes de usinagem pesada na Fupresa formado pelo SENAI. No chão de fábrica, um milímetro de folga condena a peça. Carrego exatamente essa disciplina metrológica para cada pipeline SQL, árvore AST e arquitetura em produção no Agibank.
+        <div class="story-right">
+          <span class="eyebrow-mono" data-i18n="story_kicker">A GÊNESE INDUSTRIAL</span>
+          <h2 class="section-h2" data-i18n="story_h2">Da tolerância de micrômetro<br>à arquitetura de sistemas.</h2>
+          <p class="story-p" data-i18n="story_p">
+            Antes de escrever runtimes multiagentes e compiladores, formei-me em Mecânico de Usinagem pelo SENAI e operei máquinas operatrizes pesadas na Fupresa. No chão de fábrica, um milímetro de folga condena a peça. Trago exatamente essa intolerância a código descartável para cada automação Python, pipeline SQL e arquitetura em produção no Agibank.
           </p>
 
-          <ol class="timeline">
-            <li class="timeline-item">
-              <span class="tl-date">JUN 2026 &mdash; ATUAL</span>
+          <ol class="ledger-timeline">
+            <li>
+              <span class="lt-period">JUN 2026 &mdash; ATUAL</span>
               <div>
                 <h3>Agibank &middot; HR Data Analyst I</h3>
-                <p>Engenharia de automações em Python eliminando rotinas manuais repetitivas, pipelines SQL/Python para métricas executivas e integridade de dados entre sistemas internos.</p>
+                <p>Automações em Python eliminando rotinas operacionais repetitivas, pipelines SQL/Python para métricas executivas e integridade entre sistemas corporativos.</p>
               </div>
             </li>
-            <li class="timeline-item">
-              <span class="tl-date">AGO 2025 &mdash; JUN 2026</span>
+            <li>
+              <span class="lt-period">AGO 2025 &mdash; JUN 2026</span>
               <div>
                 <h3>Agibank &middot; People Service Analyst I</h3>
-                <p>Mapeamento de gargalos operacionais em fluxos de People Service, especificação técnica de automações internas e governança de SLA corporativo.</p>
+                <p>Mapeamento de gargalos operacionais, especificação de ferramentas internas de automação e governança de SLA corporativo.</p>
               </div>
             </li>
-            <li class="timeline-item">
-              <span class="tl-date">2022 &mdash; 2025</span>
+            <li>
+              <span class="lt-period">2022 &mdash; 2025</span>
               <div>
                 <h3>Fupresa &middot; Operador de Máquinas Operatrizes</h3>
-                <p>Setup, controle geométrico rigoroso e usinagem industrial de precisão após formação técnica em Mecânico de Usinagem pelo SENAI Indaiatuba.</p>
+                <p>Usinagem industrial de precisão, setup de máquinas pesadas e controle geométrico rigoroso após aprendizagem técnica no SENAI Indaiatuba.</p>
               </div>
             </li>
-            <li class="timeline-item">
-              <span class="tl-date">2021 &mdash; 2022</span>
+            <li>
+              <span class="lt-period">2021 &mdash; 2022</span>
               <div>
                 <h3>Prefeitura de Indaiatuba &middot; Patrimônio Público</h3>
-                <p>Controle rigoroso de inventário físico e auditoria documental de ativos municipais, paralelo às certificações SENAI Cloud e Inglês Avançado (300h).</p>
+                <p>Controle rigoroso de inventário físico e auditoria documental, paralelo às certificações SENAI Cloud Services e Inglês Avançado (300h).</p>
               </div>
             </li>
           </ol>
@@ -581,46 +324,53 @@
       </div>
     </section>
 
-    <!-- ACT 5B: Complete Filterable Engineering Archive -->
-    <section id="arquivo" class="catalog-section">
+    <!-- ACT 5B: FULL FILTERABLE INDEX (100% AUTHORED REPOS + LIVE FLASK SUB-APPS) -->
+    <section id="indice" class="index-section">
       <div class="container">
-        <div class="catalog-header">
+        <div class="index-head">
           <div>
-            <p class="eyebrow-dark">ÍNDICE COMPLETO · ORDEM DE COMPLEXIDADE</p>
-            <h2 class="section-title-dark">Todas as obras e demos ao vivo.</h2>
+            <span class="eyebrow-mono">ÍNDICE COMPLETO DE ENGENHARIA</span>
+            <h2 class="section-h2">Sistemas autorais &amp; demos ao vivo.</h2>
           </div>
-          <p class="catalog-sub">
-            Os 7 sistemas de maior densidade arquitetural somados às aplicações web interativas hospedadas neste mesmo servidor Flask.
-          </p>
+          <div id="archiveFilters" class="index-filters" role="tablist" aria-label="Filtrar obras"></div>
         </div>
 
-        <div id="archiveFilters" class="catalog-filters" role="tablist" aria-label="Filtrar projetos"></div>
-        <div id="archiveGrid" class="catalog-grid"></div>
+        <div id="archiveRows" class="index-table"></div>
       </div>
     </section>
 
-    <!-- ACT 6: Stark Cinema Obsidian Finale -->
-    <section id="contato" class="finale-section">
-      <div class="finale-float-left" aria-hidden="true">
-        <img src="{{ url_for('static', filename='images/v2/thsyr_neural_core.png') }}" alt="">
-      </div>
-      <div class="finale-float-right" aria-hidden="true">
-        <img src="{{ url_for('static', filename='images/v2/bosch_eva_cutout.png') }}" alt="">
-      </div>
+    <!-- ACT 6: STARK ASYMMETRIC CONTACT FINALE -->
+    <section id="contato" class="contact-section">
+      <div class="container contact-grid">
+        <div class="contact-left">
+          <span class="eyebrow-gold" data-i18n="fin_kicker">DISPONIBILIDADE · 2026 / 2027</span>
+          <h2 class="contact-title">
+            <span data-i18n="fin_l1">Rigor de usinagem.</span><br>
+            <span class="gold-ink" data-i18n="fin_l2">Escala de software.</span>
+          </h2>
+          <p class="contact-sub" data-i18n="fin_sub">
+            Aberto a posições CLT Junior / Pleno em AI &amp; Software Engineering (Campinas/RMC ou Remoto Brasil) e oportunidades Remotas Globais em USD (fuso UTC-3).
+          </p>
+        </div>
 
-      <div class="container finale-inner">
-        <img src="{{ url_for('static', filename='images/v2/monogram_m.png') }}" alt="" class="finale-mark">
-        <h2 class="finale-title">
-          <span data-i18n="fin_line1">Rigor de usinagem.</span><br>
-          <span class="gold-gradient" data-i18n="fin_line2">Escala de software.</span>
-        </h2>
-        <p class="finale-sub" data-i18n="fin_sub">
-          Disponível para posições CLT Junior / Pleno em AI &amp; Software Engineering (Campinas/RMC ou Remoto) e oportunidades Remotas Globais em USD.
-        </p>
-        <div class="finale-actions">
-          <button type="button" id="copyEmailBtn" class="btn-primary-light">std.matheus@gmail.com</button>
-          <a href="https://github.com/Taiwansz" target="_blank" rel="noopener noreferrer" class="btn-glass-dark">GitHub</a>
-          <a href="https://www.linkedin.com/in/mth3us" target="_blank" rel="noopener noreferrer" class="btn-glass-dark">LinkedIn</a>
+        <div class="contact-right">
+          <button type="button" id="copyEmailBtn" class="contact-card is-primary">
+            <span class="cc-label">E-mail direto (clique para copiar)</span>
+            <strong>std.matheus@gmail.com</strong>
+            <span class="cc-arrow">&rarr;</span>
+          </button>
+
+          <a href="https://github.com/Taiwansz" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="cc-label">Código-fonte &amp; benchmarks</span>
+            <strong>github.com/Taiwansz</strong>
+            <span class="cc-arrow">&rarr;</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/mth3us" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="cc-label">Perfil profissional</span>
+            <strong>linkedin.com/in/mth3us</strong>
+            <span class="cc-arrow">&rarr;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -628,7 +378,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-brand">Matheus Sousa dos Santos &middot; Taiwansz &middot; 2026</div>
+      <span>Matheus Sousa dos Santos &middot; Taiwansz &middot; 2026</span>
       <div class="footer-links">
         <a href="https://github.com/Taiwansz" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/mth3us" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -639,18 +389,18 @@
 
   <!-- Slide-Over Architecture Dossier Drawer -->
   <div id="dossierBackdrop" class="drawer-backdrop" hidden></div>
-  <aside id="dossierDrawer" class="dossier-drawer" aria-label="Dossie do projeto" aria-hidden="true">
+  <aside id="dossierDrawer" class="dossier-drawer" aria-label="Dossie arquitetural" aria-hidden="true">
     <div class="drawer-head">
       <div>
         <span id="dossierTier" class="drawer-tier">COMPLEXIDADE #01</span>
         <h3 id="dossierTitle">ThSyr</h3>
       </div>
-      <button type="button" id="closeDossierBtn" class="drawer-close-btn" aria-label="Fechar dossie">&times;</button>
+      <button type="button" id="closeDossierBtn" class="drawer-close-btn" aria-label="Fechar">&times;</button>
     </div>
     <div id="dossierBody" class="drawer-body"></div>
   </aside>
 
-  <!-- Tactile Toast -->
+  <!-- Toast -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <!-- GSAP 3.12.5 + ScrollTrigger -->
