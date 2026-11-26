@@ -3,212 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Matheus Sousa dos Santos (Taiwansz) — AI & Systems Engineer, HR Data Analyst I no Agibank. Criador do ThSyr, TokLang, Atlas Engineering OS, ThAthena, Thallium Core Ledger e ThPay.">
-  <meta name="theme-color" content="#07080B">
+  <meta name="description" content="Matheus Sousa dos Santos (Taiwansz) — AI & Systems Engineer, HR Data Analyst I no Agibank. Criador do ThSyr, TokLang v2.0, Atlas Engineering OS, ThAthena, Thallium Core Ledger e ThPay.">
+  <meta name="theme-color" content="#07080A">
   <title>Matheus Sousa — AI &amp; Systems Engineer</title>
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/v2/monogram_m.png') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/atelier.css') }}?v=20261126a">
 </head>
 <body data-hdr-theme="dark">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Global Reading Progress Bar (3px top edge) -->
-  <div class="hdr-progress" aria-hidden="true"><span id="topProgressBar" data-progress></span></div>
+  <!-- Global Reading Progress Hairline -->
+  <div class="hdr-progress" aria-hidden="true"><span id="topProgressBar"></span></div>
 
-  <!-- Minimal Floating Chrome Header (Single-Logo Discipline + elementsFromPoint Theme Sync) -->
-  <header id="siteHeader" class="hdr" data-hdr role="banner">
-    <a href="#topo" class="hdr-brand" aria-label="Matheus Sousa — voltar ao topo">
-      <img src="{{ url_for('static', filename='images/v2/monogram_m.png') }}" alt="Monograma M" class="hdr-mark">
-      <span class="hdr-brand-text">Matheus Sousa</span>
-    </a>
+  <!-- Floating Pill Navigation Chrome (Adaptive Polarity via elementsFromPoint) -->
+  <header id="siteHeader" class="site-nav" data-hdr role="banner">
+    <div class="nav-shell">
+      <a href="#topo" class="nav-brand" aria-label="Matheus Sousa — voltar ao topo">
+        <img src="{{ url_for('static', filename='images/v2/monogram_m.png') }}" alt="Monograma M" class="nav-mark" width="20" height="20">
+        <span class="nav-wordmark">Matheus<b>Sousa</b></span>
+      </a>
 
-    <div class="hdr-spacer" aria-hidden="true"></div>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#topo" class="nav-link active" data-nav="topo" data-i18n="nav_home">Início</a>
+        <a href="#genese" class="nav-link" data-nav="genese" data-i18n="nav_genesis">Gênese</a>
+        <a href="#thsyr" class="nav-link" data-nav="thsyr">ThSyr</a>
+        <a href="#complexidade" class="nav-link" data-nav="complexidade" data-i18n="nav_projects">Projetos</a>
+        <a href="#toklang-lab" class="nav-link" data-nav="toklang-lab">TokLang</a>
+        <a href="#contato" class="nav-link" data-nav="contato" data-i18n="nav_contact">Contato</a>
+      </nav>
 
-    <div class="hdr-actions">
-      <button id="langToggleBtn" class="hdr-pill hdr-lang" type="button" aria-label="Alternar idioma">EN</button>
-      <button id="menuToggleBtn" class="hdr-pill hdr-menu-btn" type="button" data-menu-btn aria-expanded="false" aria-controls="sumario">
-        <span data-i18n="nav_menu">Sumário</span>
-        <span class="hdr-menu-icon" aria-hidden="true"><i></i><i></i></span>
-      </button>
+      <div class="nav-actions">
+        <button id="langToggleBtn" class="nav-pill-btn nav-lang" type="button" aria-label="Alternar idioma">EN</button>
+        <button id="menuToggleBtn" class="nav-pill-btn nav-menu-btn" type="button" aria-expanded="false" aria-controls="sumario">
+          <span data-i18n="nav_menu">Sumário</span>
+          <span class="nav-menu-bars" aria-hidden="true"><i></i><i></i></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- Vertical Left Chapter Rail (O Jeito Agi Architecture) -->
-  <nav class="side-guide" aria-label="Navegação por capítulos">
-    <ul id="sideGuideList" class="side-guide-ticks" data-guide></ul>
-    <div class="side-guide-label">
-      <span class="side-guide-prefix" data-i18n="rail_in">Você está em</span>
-      <strong id="sideChapterName" data-side-name>Abertura</strong>
-    </div>
-  </nav>
+  <!-- Vertical Left Chapter Rail (Desktop >=1280px, strict safe-zone) -->
+  <aside class="chapter-rail" id="chapterRail" aria-label="Navegação de capítulos">
+    <div class="rail-label">TAIWANSZ &middot; 2026</div>
+    <nav class="rail-dots" id="sideGuideList">
+      <a href="#topo" class="rail-item active" data-chapter="topo" title="01 Abertura"><span class="rail-dash"></span><span class="rail-num">01</span></a>
+      <a href="#principios" class="rail-item" data-chapter="principios" title="02 Critérios"><span class="rail-dash"></span><span class="rail-num">02</span></a>
+      <a href="#genese" class="rail-item" data-chapter="genese" title="03 Gênese"><span class="rail-dash"></span><span class="rail-num">03</span></a>
+      <a href="#arquitetura" class="rail-item" data-chapter="arquitetura" title="04 Planta CAD"><span class="rail-dash"></span><span class="rail-num">04</span></a>
+      <a href="#thsyr" class="rail-item" data-chapter="thsyr" title="05 ThSyr #01"><span class="rail-dash"></span><span class="rail-num">05</span></a>
+      <a href="#complexidade" class="rail-item" data-chapter="complexidade" title="06 Sistemas #02–#07"><span class="rail-dash"></span><span class="rail-num">06</span></a>
+      <a href="#toklang-lab" class="rail-item" data-chapter="toklang-lab" title="07 TokLang v2"><span class="rail-dash"></span><span class="rail-num">07</span></a>
+      <a href="#indice" class="rail-item" data-chapter="indice" title="08 Índice &amp; Contato"><span class="rail-dash"></span><span class="rail-num">08</span></a>
+    </nav>
+    <span class="sr-only" id="sideChapterName">Abertura</span>
+  </aside>
 
-  <!-- Fullscreen Clip-Path Sumário Menu -->
-  <nav id="sumario" class="menu-overlay" data-menu hidden aria-label="Sumário completo do portfólio">
+  <!-- Fullscreen Clip-Path Sumário Overlay -->
+  <nav id="sumario" class="menu-overlay" hidden aria-label="Sumário completo do portfólio">
     <div class="menu-inner">
       <div class="menu-meta">
         <span>MATHEUS SOUSA DOS SANTOS &middot; TAIWANSZ</span>
         <span>AI &amp; SYSTEMS ENGINEER &middot; 2026</span>
       </div>
       <ol class="menu-list">
-        <li><a href="#topo"><b>00</b><span>Abertura &amp; Núcleo 3D</span><small>ThSyr Live Neural Core</small></a></li>
-        <li><a href="#genese"><b>01</b><span>A Gênese Industrial</span><small>SENAI / Fupresa &rarr; Agibank &middot; UniMAX '27</small></a></li>
-        <li><a href="#manifesto"><b>02</b><span>Manifesto Técnico</span><small>Engenharia sem folga &amp; rigor estrutural</small></a></li>
-        <li><a href="#arquitetura"><b>03</b><span>Planta Cognitiva CAD</span><small>Arquitetura 5 Lobos desenhada ao vivo</small></a></li>
-        <li><a href="#thsyr"><b>04</b><span>Projeto #01 · ThSyr</span><small>206 módulos · 96,6% AST · 3.972+ nós</small></a></li>
-        <li><a href="#complexidade"><b>05</b><span>Matriz #02 &mdash; #07</span><small>Projetos autorais por complexidade</small></a></li>
-        <li><a href="#toklang-lab"><b>06</b><span>Compilador TokLang</span><small>-56,2% tokens &middot; bancada ao vivo (TCC)</small></a></li>
-        <li><a href="#principios"><b>07</b><span>Critérios Inegociáveis</span><small>O que não entra em produção</small></a></li>
-        <li><a href="#indice"><b>08</b><span>Índice &amp; Contato</span><small>14 sistemas autorais + apps Flask ao vivo</small></a></li>
+        <li><a href="#topo"><b>01</b><span>Abertura &amp; Monólito CNC</span><small>AI &amp; Systems Engineering</small></a></li>
+        <li><a href="#principios"><b>02</b><span>Critérios Inegociáveis</span><small>O que não entra em produção</small></a></li>
+        <li><a href="#genese"><b>03</b><span>A Gênese Industrial</span><small>SENAI / Fupresa &rarr; Agibank &middot; UniMAX '27</small></a></li>
+        <li><a href="#arquitetura"><b>04</b><span>Planta Cognitiva CAD</span><small>5 Lobos ThSyr &middot; GraphRAG RRF</small></a></li>
+        <li><a href="#thsyr"><b>05</b><span>Projeto #01 &middot; ThSyr</span><small>206 módulos &middot; 96,6% AST &middot; Núcleo 3D ao vivo</small></a></li>
+        <li><a href="#complexidade"><b>06</b><span>Matriz #02 &mdash; #07</span><small>6 sistemas autorais por peso de engenharia</small></a></li>
+        <li><a href="#toklang-lab"><b>07</b><span>TokLang v2.0 ao Vivo</span><small>-59,9% BPE lossless &middot; -71,1% CAPC &middot; TCC</small></a></li>
+        <li><a href="#indice"><b>08</b><span>Índice &amp; Contato</span><small>14 obras autorais + 4 apps Flask ao vivo</small></a></li>
       </ol>
     </div>
   </nav>
 
   <main id="conteudo">
     <!-- ====================================================================
-         ACT 00: OPTICAL CONTINUITY OPENING + LIVE 3D GOLDEN THSYR NEURAL CORE
+         ACT 01: HERO-POSTER (REAL PHYSICAL Z-OCCLUSION: SOLID MATHEUS BEHIND 3D PBR GYRO)
          ==================================================================== -->
-    <section id="topo" class="scene s-open" data-theme="dark" data-chapter="00" data-chapter-title="Abertura">
-      <div class="pin open-pin">
-        <div class="hero-grid-bg" aria-hidden="true"></div>
+    <section id="topo" class="hero-poster" data-theme="dark" data-chapter="topo" data-chapter-title="Abertura">
+      <!-- L0: Atmospheric Cyclorama & Champagne Gold / Verdigris Studio Spotlight -->
+      <div class="hero-cyclorama" aria-hidden="true"></div>
 
-        <!-- Expanding Golden Optical Portal (bridges Act 00 -> Act 01 on scroll) -->
-        <div class="open-portal" id="openPortal" aria-hidden="true"></div>
+      <!-- L0.5 (z: 6): Precision Horological CAD Orbital Canvas (60fps) -->
+      <canvas id="portfolio-hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
 
-        <div class="wrap-wide open-stage">
-          <!-- Left Column: Hero-Poster Thesis + Micro-HUD -->
-          <div class="open-copy">
-            <div class="eyebrow-row reveal-hero">
-              <span class="eyebrow-rule"></span>
-              <span data-i18n="hero_kicker">AI &amp; SYSTEMS ENGINEER &middot; INDAIATUBA / CAMPINAS</span>
-            </div>
+      <!-- L1 (z: 10): SOLID MONUMENTAL EDGE-TO-EDGE WORDMARK (Physically Occluded by L2 3D Sculpture!) -->
+      <div class="hero-poster-bg-type" aria-hidden="true">MATHEUS</div>
 
-            <h1 class="open-headline reveal-hero">
-              <span class="open-line-1" data-i18n="hero_l1">Sistemas cognitivos.</span><br>
-              <span class="open-line-2 gold-ink" data-i18n="hero_l2">Engenharia sem folga.</span>
-            </h1>
+      <!-- L2 (z: 20): OPAQUE 3D PBR TITANIUM-GOLD CNC ASTROLABE GYROSCOPE (Real Z-Axis Interlock) -->
+      <div class="hero-sculpture-stage" id="hero-sculpture-stage">
+        <picture class="hero-sculpture-pic">
+          <source srcset="{{ url_for('static', filename='images/v2/hero-gyro.webp') }}?v=20261126a" type="image/webp">
+          <img src="{{ url_for('static', filename='images/v2/hero-gyro.png') }}?v=20261126a" alt="Astrolábio mecânico usinado em titânio obsidiana e ouro champagne representando precisão industrial e engenharia de sistemas" class="hero-sculpture-img" width="741" height="780" decoding="async" fetchpriority="high">
+        </picture>
+      </div>
 
-            <p class="open-lead reveal-hero" data-i18n="hero_lead">
-              HR Data Analyst I no Agibank e graduando em Ciência da Computação (UniMAX '27). Projeto runtimes multiagentes em Python, compiladores determinísticos para LLMs e software com tolerância de usinagem.
-            </p>
+      <!-- L3 (z: 30): 4-Corner Swiss Poster Micro-HUD (<= 22 words total on first fold) -->
+      <div class="hero-hud-tl">
+        <span class="hud-dot"></span>
+        <span data-i18n="hero_kicker">AI &amp; SYSTEMS ENGINEER &middot; AGIBANK &middot; UNIMAX '27</span>
+      </div>
 
-            <div class="open-cta-row reveal-hero">
-              <a href="#thsyr" class="btn-solid-gold" data-i18n="hero_cta1">Explorar ThSyr #01 &rarr;</a>
-              <a href="#toklang-lab" class="btn-line-dark" data-i18n="hero_cta2">Testar TokLang ao vivo</a>
-            </div>
+      <div class="hero-hud-tr">
+        <span class="tabular">INDAIATUBA / CAMPINAS &middot; UTC-3</span>
+      </div>
 
-            <dl class="open-telemetry reveal-hero">
-              <div><dt>206</dt><dd data-i18n="t_mod">módulos no engine ThSyr</dd></div>
-              <div><dt>96,6%</dt><dd data-i18n="t_ast">tipagem estrita AST</dd></div>
-              <div><dt>-56,2%</dt><dd data-i18n="t_tok">tokens no TokLang</dd></div>
-              <div><dt>3.972+</dt><dd data-i18n="t_nod">nós no grafo neural</dd></div>
-            </dl>
-          </div>
+      <div class="hero-hud-bl">
+        <h1 class="hero-h1" data-i18n="hero_h1">Sistemas cognitivos.<br><em>Engenharia&nbsp;sem&nbsp;folga.</em></h1>
+        <p class="hero-thesis" data-i18n="hero_lead">
+          Runtimes multiagentes em Python, compiladores determinísticos para LLMs e software com tolerância de usinagem.
+        </p>
+        <div class="hero-cta-row">
+          <a href="#thsyr" class="btn btn-primary" data-magnetic data-i18n="hero_cta1">Explorar ThSyr #01</a>
+          <a href="#toklang-lab" class="btn btn-ghost" data-i18n="hero_cta2">Testar TokLang v2</a>
+        </div>
+      </div>
 
-          <!-- Right Column: Live 60fps 3D Golden ThSyr Neural Core -->
-          <div class="open-core-col reveal-hero">
-            <div class="core-stage" id="coreStage">
-              <div class="core-canvas-wrap">
-                <canvas id="thsyrLiveCore" width="640" height="520" aria-label="Núcleo Neural 3D animado do ThSyr com 5 lobos cerebrais"></canvas>
-              </div>
-              <div class="core-hud-bottom">
-                <div class="core-lobe-pills" role="radiogroup" aria-label="Filtrar lobo cerebral no núcleo 3D">
-                  <button type="button" class="core-lobe-btn is-active" data-core-lobe="all">Todos</button>
-                  <button type="button" class="core-lobe-btn" data-core-lobe="frontal">Frontal</button>
-                  <button type="button" class="core-lobe-btn" data-core-lobe="parietal">Parietal</button>
-                  <button type="button" class="core-lobe-btn" data-core-lobe="temporal">Temporal</button>
-                  <button type="button" class="core-lobe-btn" data-core-lobe="occipital">Occipital</button>
-                  <button type="button" class="core-lobe-btn" data-core-lobe="limbico">Límbico</button>
+      <div class="hero-hud-br">
+        <div class="hud-kpi">
+          <span class="hud-kpi-val gold tabular">206</span>
+          <span class="hud-kpi-lbl" data-i18n="t_mod">Módulos ThSyr &middot; 96,6% AST</span>
+        </div>
+        <div class="hud-kpi">
+          <span class="hud-kpi-val teal tabular">-59,9%</span>
+          <span class="hud-kpi-lbl" data-i18n="t_tok">TokLang v2 BPE</span>
+        </div>
+        <div class="hud-kpi">
+          <span class="hud-kpi-val ok tabular">3.972+</span>
+          <span class="hud-kpi-lbl" data-i18n="t_nod">Nós Grafo Neural</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ACT 02: MANIFESTO RISCADO (ANIMATED GOLD STRIKETHROUGH)
+         ==================================================================== -->
+    <section id="principios" class="manifesto-act" data-theme="dark" data-chapter="principios" data-chapter-title="Critérios">
+      <div class="act-inner">
+        <div class="section-tag">02 &middot; Critérios Inegociáveis</div>
+        <div class="manifesto-lines">
+          <div class="manifesto-row"><span class="strike-line">Templates genéricos de IA sem arquitetura.</span></div>
+          <div class="manifesto-row"><span class="strike-line">Agentes com amnésia que bajulam premissas frágeis.</span></div>
+          <div class="manifesto-row"><span class="strike-line">Código de produção sem teste real nem tipagem.</span></div>
+          <div class="manifesto-row"><span class="strike-line">Gambiarra travestida de MVP sem invariantes.</span></div>
+        </div>
+        <p class="manifesto-verdict">
+          Substituímos improviso por <em>tolerância de micrômetro</em> — verificada em código, AST e telemetria real.
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ACT 03: ATMOSPHERIC INVERSION — EDITORIAL PAPER (#F0EDE6) INDUSTRIAL GENESIS
+         ==================================================================== -->
+    <section id="genese" class="genesis-act" data-theme="light" data-chapter="genese" data-chapter-title="Gênese">
+      <div class="act-inner">
+        <div class="genesis-grid">
+          <!-- Left Sticky Portrait Frame + Subtle Vertical Syllable Stack -->
+          <div class="genesis-visual">
+            <div class="portrait-bezel">
+              <div class="portrait-frame">
+                <img src="{{ url_for('static', filename='images/v2/matheus_portrait.jpg') }}" alt="Matheus Sousa dos Santos" class="portrait-img">
+                <div class="portrait-scrim" aria-hidden="true"></div>
+                <div class="portrait-syllables" aria-hidden="true">
+                  <span>gê</span>
+                  <span>ne</span>
+                  <span>se</span>
                 </div>
-                <div class="core-readout">
-                  <span id="coreLobeReadout">Núcleo Holográfico ThSyr &middot; arraste para orbitar em 3D</span>
-                  <span class="core-counts">3.972 nós &middot; 38.126 sinapses</span>
+                <div class="portrait-caption">
+                  <strong>Matheus Sousa dos Santos</strong>
+                  <span>SENAI USINAGEM &rarr; AGIBANK &middot; UNIMAX '27</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="open-cue" aria-hidden="true"></div>
-      </div>
-    </section>
+          <!-- Right Editorial Narrative + Chronological Ledger + Precision SVG Signature -->
+          <div class="genesis-copy">
+            <div class="section-tag dark-tag">03 &middot; <span data-i18n="story_kicker">A Gênese Industrial</span></div>
+            <h2 class="section-title dark-title" data-i18n="story_h2">Da tolerância de micrômetro à <em>arquitetura de sistemas</em>.</h2>
 
-    <!-- ====================================================================
-         ACT 01: STICKY 50/50 INDUSTRIAL GENESIS + VERTICAL SYLLABLE STACK
-         ==================================================================== -->
-    <section id="genese" class="scene s-pref" data-theme="light" data-chapter="01" data-chapter-title="Gênese Industrial">
-      <div class="pref-grid">
-        <!-- Sticky Full-Height Portrait + Monumental Vertical Syllable Stack -->
-        <div class="pref-photo">
-          <img src="{{ url_for('static', filename='images/v2/matheus_portrait.jpg') }}" alt="Matheus Sousa dos Santos">
-          <div class="pref-scrim" aria-hidden="true"></div>
-          <div class="pref-giant" aria-hidden="true">
-            <span>gê</span>
-            <span>ne</span>
-            <span>se</span>
-          </div>
-        </div>
+            <div class="genesis-prose">
+              <p>
+                Antes de projetar runtimes multiagentes em Python e compiladores determinísticos para LLMs, formei-me em <strong>Mecânico de Usinagem pelo SENAI Indaiatuba</strong> e operei máquinas operatrizes pesadas na <strong>Fupresa</strong>.
+              </p>
+              <p>
+                No chão de fábrica, um milímetro de folga não vira "débito técnico" — condena a peça inteira. Hoje, como <strong>HR Data Analyst I no Agibank</strong> e graduando em Ciência da Computação (UniMAX '27), aplico essa mesma disciplina metrológica em automações Python, pipelines SQL e sistemas cognitivos auditáveis.
+              </p>
+            </div>
 
-        <!-- Editorial Narrative + Animated SVG Precision Calliper Signature -->
-        <div class="pref-text">
-          <span class="kicker"><b>01</b> <span data-i18n="story_kicker">A GÊNESE INDUSTRIAL</span></span>
-          <h2 class="t-l" data-i18n="story_h2">Da tolerância de micrômetro à arquitetura de sistemas.</h2>
+            <ol class="ledger-list">
+              <li>
+                <span class="ledger-period tabular">JUN 2026 &mdash; ATUAL</span>
+                <div class="ledger-body">
+                  <h3>Agibank &middot; HR Data Analyst I</h3>
+                  <p>Automações Python eliminando rotinas operacionais repetitivas, pipelines SQL/Python para métricas executivas e integridade entre sistemas corporativos.</p>
+                </div>
+              </li>
+              <li>
+                <span class="ledger-period tabular">AGO 2025 &mdash; JUN 2026</span>
+                <div class="ledger-body">
+                  <h3>Agibank &middot; People Service Analyst I</h3>
+                  <p>Mapeamento de gargalos operacionais, especificação de ferramentas internas de automação e governança de SLA corporativo.</p>
+                </div>
+              </li>
+              <li>
+                <span class="ledger-period tabular">2022 &mdash; 2025</span>
+                <div class="ledger-body">
+                  <h3>Fupresa &middot; Operador de Máquinas Operatrizes</h3>
+                  <p>Usinagem industrial de precisão, setup de máquinas pesadas e controle geométrico rigoroso após formação técnica no SENAI.</p>
+                </div>
+              </li>
+              <li>
+                <span class="ledger-period tabular">2021 &mdash; 2022</span>
+                <div class="ledger-body">
+                  <h3>Prefeitura de Indaiatuba &middot; Patrimônio Público</h3>
+                  <p>Controle de inventário físico e auditoria documental em paralelo às certificações SENAI Cloud Services e Inglês Fluente (300h).</p>
+                </div>
+              </li>
+            </ol>
 
-          <div class="pref-body">
-            <p data-reveal>
-              Antes de projetar runtimes multiagentes em Python e compiladores determinísticos para LLMs, formei-me em <strong>Mecânico de Usinagem pelo SENAI Indaiatuba</strong> e operei máquinas operatrizes pesadas na <strong>Fupresa</strong>.
-            </p>
-            <p data-reveal>
-              No chão de fábrica, um milímetro de folga não vira "débito técnico" — ele condena a peça inteira. Essa disciplina metrológica moldou o jeito como escrevo software hoje: tipagem estrita, invariantes verificáveis e testes automatizados antes de qualquer entrega.
-            </p>
-            <p class="pref-hl" data-scrub-words>
-              Hoje, como <strong>HR Data Analyst I no Agibank</strong> e graduando em Ciência da Computação (UniMAX '27), levo exatamente essa intolerância a código descartável para automações Python, pipelines SQL e sistemas cognitivos em produção.
-            </p>
-          </div>
-
-          <ol class="ledger-timeline">
-            <li data-reveal>
-              <span class="lt-period">JUN 2026 &mdash; ATUAL</span>
-              <div>
-                <h3>Agibank &middot; HR Data Analyst I</h3>
-                <p>Automações em Python eliminando rotinas operacionais repetitivas, pipelines SQL/Python para métricas executivas e integridade entre sistemas corporativos.</p>
+            <div class="genesis-signoff">
+              <svg id="precision-sig-svg" class="precision-sig" viewBox="0 0 320 62" fill="none" aria-hidden="true">
+                <path class="sig-path" pathLength="1" d="M10 48 L26 12 L42 42 L58 12 L74 48" stroke="#14161A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="sig-path" pathLength="1" d="M90 42 C102 22, 122 20, 128 34 C134 48, 156 42, 168 26 C180 12, 194 44, 214 38 C234 32, 262 24, 304 28" stroke="#14161A" stroke-width="1.8" stroke-linecap="round"/>
+                <path class="sig-path" pathLength="1" d="M90 54 L292 54" stroke="#1D5E6F" stroke-width="1.3" stroke-dasharray="4 4"/>
+              </svg>
+              <div class="signoff-meta">
+                <strong>Matheus Sousa dos Santos</strong>
+                <span>Indaiatuba / Campinas, SP &middot; Português Nativo &middot; Inglês Fluente</span>
               </div>
-            </li>
-            <li data-reveal>
-              <span class="lt-period">AGO 2025 &mdash; JUN 2026</span>
-              <div>
-                <h3>Agibank &middot; People Service Analyst I</h3>
-                <p>Mapeamento de gargalos operacionais, especificação de ferramentas internas de automação e governança de SLA corporativo.</p>
-              </div>
-            </li>
-            <li data-reveal>
-              <span class="lt-period">2022 &mdash; 2025</span>
-              <div>
-                <h3>Fupresa &middot; Operador de Máquinas Operatrizes</h3>
-                <p>Usinagem industrial de precisão, setup de máquinas pesadas e controle geométrico rigoroso após formação técnica no SENAI.</p>
-              </div>
-            </li>
-            <li data-reveal>
-              <span class="lt-period">2021 &mdash; 2022</span>
-              <div>
-                <h3>Prefeitura de Indaiatuba &middot; Patrimônio Público</h3>
-                <p>Controle de inventário físico e auditoria documental em paralelo às certificações SENAI Cloud Services e Inglês Fluente (300h).</p>
-              </div>
-            </li>
-          </ol>
-
-          <!-- Animated Technical Signature Signoff -->
-          <div class="pref-signoff">
-            <svg class="precision-sig" viewBox="0 0 320 68" fill="none" aria-hidden="true">
-              <path d="M10 52 L28 14 L46 46 L64 14 L82 52" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M98 46 C108 26, 128 24, 134 38 C140 52, 162 46, 174 30 C186 14, 198 48, 218 42 C238 36, 266 28, 308 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M96 58 L292 58" stroke="#1D5E6F" stroke-width="1.4" stroke-dasharray="4 4"/>
-            </svg>
-            <div class="signoff-meta">
-              <strong>Matheus Sousa dos Santos</strong>
-              <span>Indaiatuba / Campinas, SP &middot; Português Nativo &middot; Inglês Fluente</span>
             </div>
           </div>
         </div>
@@ -216,117 +245,68 @@
     </section>
 
     <!-- ====================================================================
-         ACT 02: EDITORIAL ZIG-ZAG MANIFESTO + STICKY 2D PARTICLE WAVE CANVAS
+         ACT 04: ARCHITECTURAL CAD SVG BLUEPRINT OF THSYR (pathLength="1")
          ==================================================================== -->
-    <section id="manifesto" class="scene s-apres" data-theme="dark" data-chapter="02" data-chapter-title="Manifesto">
-      <canvas class="particles-sticky" data-particles="soft" aria-hidden="true"></canvas>
-
-      <div class="wrap-wide apres">
-        <p class="apres-1" data-scrub-words>
-          A maioria dos agentes de IA sofre de três colapsos estruturais: amnésia, bajulação e alucinação.
-        </p>
-        <p class="apres-2">
-          Prompt bonito não resolve arquitetura. Quando o contexto cresce, o sistema colapsa se não houver engenharia determinística por baixo.
-        </p>
-        <p class="apres-3" data-scrub-words>
-          Por isso eu não monto vitrines — eu projeto <strong>sistemas auditáveis.</strong>
-        </p>
-        <p class="apres-4">
-          Do grafo neural persistente ao compilador LL(1) que corta mais da metade dos tokens pagos em GPU.
-        </p>
-        <p class="apres-5">
-          Cada repositório neste portfólio é 100% autoral, mensurado por testes reais e ordenado pelo peso real de engenharia.
-        </p>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         ACT 03: LIVE SVG CAD BLUEPRINT TOUR OF THSYR (O JEITO AGI TEMPLE ENGINE)
-         ==================================================================== -->
-    <section id="arquitetura" class="scene s-casa" data-theme="light" data-chapter="03" data-chapter-title="Planta Cognitiva">
-      <div class="pin casa-pin">
-        <div class="casa-grid" aria-hidden="true"></div>
-
-        <div class="wrap-wide casa-stage">
-          <!-- Left Copy Overlay (reveals after CAD draw completes) -->
-          <div class="casa-copy">
-            <span class="kicker"><b>03</b> ARQUITETURA CANÔNICA &middot; PROJETO #01</span>
-            <h2 class="t-l">Anatomia do <span class="teal-ink">ThSyr.</span></h2>
-            <p class="t-body">
-              Uma arquitetura cognitiva construída como planta técnica: memória de longo prazo dividida em 5 lobos funcionais, governada por um Córtex Pré-Frontal determinístico em software.
-            </p>
-            <div class="casa-legend">
-              <div class="casa-leg-item" data-casa-step="gate">
-                <span>CAMADA SUPERIOR</span>
-                <strong>Córtex Pré-Frontal &amp; Rigor Epistêmico</strong>
-              </div>
-              <div class="casa-leg-item" data-casa-step="lobes">
-                <span>5 LOBOS ESPECIALIZADOS</span>
-                <strong>Frontal &middot; Parietal &middot; Temporal &middot; Occipital &middot; Límbico</strong>
-              </div>
-              <div class="casa-leg-item" data-casa-step="base">
-                <span>BASE PERSISTENTE</span>
-                <strong>GraphRAG Híbrido RRF &middot; 3.972+ nós &middot; 38.126+ sinapses</strong>
-              </div>
-            </div>
+    <section id="arquitetura" class="cad-act" data-theme="dark" data-chapter="arquitetura" data-chapter-title="Planta CAD">
+      <div class="act-inner">
+        <div class="cad-head">
+          <div>
+            <div class="section-tag">04 &middot; Planta Cognitiva CAD &middot; Projeto #01</div>
+            <h2 class="section-title">Cinco lobos sob <em>veto pré-frontal</em>.</h2>
           </div>
+          <span class="cad-spec tabular">206 MÓDULOS PYTHON &middot; 96,6% AST &middot; 77 SUÍTES PYTEST</span>
+        </div>
 
-          <!-- Right Interactive CAD Blueprint SVG (pathLength="1" progressive draw -> solid -> zoom dive!) -->
-          <div class="casa-hz-wrap" id="casaSvgWrap">
-            <svg id="thsyrCadSvg" class="casa-svg" viewBox="0 0 720 520" fill="none" role="img" aria-label="Planta arquitetural CAD dos 5 lobos cognitivos do ThSyr">
-              <!-- Technical center axis & cota lines -->
-              <line class="tec-axis" x1="360" y1="24" x2="360" y2="496" stroke="#1D5E6F" stroke-width="1" stroke-dasharray="6 6" opacity="0"/>
-              <g class="tec-cota" opacity="0" stroke="#1D5E6F" stroke-width="1">
-                <line x1="88" y1="42" x2="632" y2="42"/>
-                <line x1="88" y1="34" x2="88" y2="50"/>
-                <line x1="632" y1="34" x2="632" y2="50"/>
-                <line x1="88" y1="478" x2="632" y2="478"/>
-                <line x1="88" y1="470" x2="88" y2="486"/>
-                <line x1="632" y1="470" x2="632" y2="486"/>
-              </g>
+        <div class="bezel-outer">
+          <div class="bezel-inner cad-frame">
+            <svg id="thsyr-cad-svg" class="cad-svg" viewBox="0 0 1120 286" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Planta arquitetural CAD dos 5 lobos cognitivos do ThSyr">
+              <!-- Top Governance Gate -->
+              <rect class="cad-stroke cad-box" x="28" y="22" width="1064" height="48" rx="10" stroke="#D4AF6A" stroke-width="1.4" fill="rgba(212,175,106,0.06)" pathLength="1"/>
+              <text x="560" y="50" text-anchor="middle" fill="#D4AF6A" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="600" letter-spacing="2">CÓRTEX PRÉ-FRONTAL · INIBIÇÃO ANTI-BAJULAÇÃO · RESTRIÇÕES IMUTÁVEIS · AST 96,6%</text>
 
-              <!-- TOP GATE: Prefrontal Cortex Cap -->
-              <g class="cad-group" data-cad-part="gate">
-                <polygon class="cad-fill" points="92,158 360,64 628,158 628,188 92,188" fill="#0B0E14" fill-opacity="0"/>
-                <polygon class="cad-ol" pathLength="1" points="92,158 360,64 628,158 628,188 92,188" stroke="#1D5E6F" stroke-width="2.2"/>
-                <text class="cad-label-txt" x="360" y="148" text-anchor="middle" fill="#D4AF4F" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" opacity="0">CÓRTEX PRÉ-FRONTAL · VETO &amp; AST 96,6%</text>
-              </g>
+              <!-- Vertical Conduits Top -> Lobes -->
+              <line class="cad-stroke cad-link" x1="126" y1="70" x2="126" y2="104" stroke="#D4AF6A" stroke-width="1.2" pathLength="1"/>
+              <line class="cad-stroke cad-link" x1="343" y1="70" x2="343" y2="104" stroke="#D4AF6A" stroke-width="1.2" pathLength="1"/>
+              <line class="cad-stroke cad-link" x1="560" y1="70" x2="560" y2="104" stroke="#D4AF6A" stroke-width="1.2" pathLength="1"/>
+              <line class="cad-stroke cad-link" x1="777" y1="70" x2="777" y2="104" stroke="#D4AF6A" stroke-width="1.2" pathLength="1"/>
+              <line class="cad-stroke cad-link" x1="994" y1="70" x2="994" y2="104" stroke="#D4AF6A" stroke-width="1.2" pathLength="1"/>
 
-              <!-- MIDDLE 5 PILLARS: The 5 Cognitive Lobes -->
-              <g class="cad-group" data-cad-part="lobes">
-                <g class="cad-pillar">
-                  <rect class="cad-fill" x="108" y="210" width="84" height="168" rx="8" fill="#1D5E6F" fill-opacity="0"/>
-                  <rect class="cad-ol" pathLength="1" x="108" y="210" width="84" height="168" rx="8" stroke="#1D5E6F" stroke-width="2"/>
-                  <text class="cad-p-txt" x="150" y="298" text-anchor="middle" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" opacity="0">FRONTAL</text>
-                </g>
-                <g class="cad-pillar">
-                  <rect class="cad-fill" x="213" y="210" width="84" height="168" rx="8" fill="#141820" fill-opacity="0"/>
-                  <rect class="cad-ol" pathLength="1" x="213" y="210" width="84" height="168" rx="8" stroke="#1D5E6F" stroke-width="2"/>
-                  <text class="cad-p-txt" x="255" y="298" text-anchor="middle" fill="#F0CE74" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" opacity="0">PARIETAL</text>
-                </g>
-                <g class="cad-pillar">
-                  <rect class="cad-fill" x="318" y="210" width="84" height="168" rx="8" fill="#D4AF4F" fill-opacity="0"/>
-                  <rect class="cad-ol" pathLength="1" x="318" y="210" width="84" height="168" rx="8" stroke="#1D5E6F" stroke-width="2"/>
-                  <text class="cad-p-txt" x="360" y="298" text-anchor="middle" fill="#14120A" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" opacity="0">TEMPORAL</text>
-                </g>
-                <g class="cad-pillar">
-                  <rect class="cad-fill" x="423" y="210" width="84" height="168" rx="8" fill="#141820" fill-opacity="0"/>
-                  <rect class="cad-ol" pathLength="1" x="423" y="210" width="84" height="168" rx="8" stroke="#1D5E6F" stroke-width="2"/>
-                  <text class="cad-p-txt" x="465" y="298" text-anchor="middle" fill="#F0CE74" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" opacity="0">OCCIPITAL</text>
-                </g>
-                <g class="cad-pillar">
-                  <rect class="cad-fill" x="528" y="210" width="84" height="168" rx="8" fill="#1D5E6F" fill-opacity="0"/>
-                  <rect class="cad-ol" pathLength="1" x="528" y="210" width="84" height="168" rx="8" stroke="#1D5E6F" stroke-width="2"/>
-                  <text class="cad-p-txt" x="570" y="298" text-anchor="middle" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" opacity="0">LÍMBICO</text>
-                </g>
-              </g>
+              <!-- 5 Cognitive Lobes -->
+              <rect class="cad-stroke cad-box" x="28" y="104" width="196" height="92" rx="10" stroke="#3B8EA5" stroke-width="1.3" fill="#0F1218" pathLength="1"/>
+              <text x="44" y="128" fill="#3B8EA5" font-family="JetBrains Mono, monospace" font-size="9.5">01 · EXECUTIVO</text>
+              <text x="44" y="154" fill="#F0EDE6" font-family="Schibsted Grotesk, sans-serif" font-size="15.5" font-weight="600">Lobo Frontal</text>
+              <text x="44" y="177" fill="#9A968E" font-family="JetBrains Mono, monospace" font-size="9.5">Leis · Veto · Router</text>
 
-              <!-- BASE: Persistent GraphRAG Knowledge Foundation -->
-              <g class="cad-group" data-cad-part="base">
-                <rect class="cad-fill" x="88" y="398" width="544" height="58" rx="8" fill="#0B0E14" fill-opacity="0"/>
-                <rect class="cad-ol" pathLength="1" x="88" y="398" width="544" height="58" rx="8" stroke="#1D5E6F" stroke-width="2.2"/>
-                <text class="cad-label-txt" x="360" y="432" text-anchor="middle" fill="#F4F2EC" font-family="JetBrains Mono, monospace" font-size="12.5" font-weight="600" opacity="0">GRAPHRAG HÍBRIDO RRF · 3.972+ NÓS · 38.126+ SINAPSES</text>
-              </g>
+              <rect class="cad-stroke cad-box" x="245" y="104" width="196" height="92" rx="10" stroke="rgba(240,237,230,0.28)" stroke-width="1.2" fill="#0F1218" pathLength="1"/>
+              <text x="261" y="128" fill="#D4AF6A" font-family="JetBrains Mono, monospace" font-size="9.5">02 · ENGENHARIA</text>
+              <text x="261" y="154" fill="#F0EDE6" font-family="Schibsted Grotesk, sans-serif" font-size="15.5" font-weight="600">Lobo Parietal</text>
+              <text x="261" y="177" fill="#9A968E" font-family="JetBrains Mono, monospace" font-size="9.5">AST · CodeGraph · SQL</text>
+
+              <rect class="cad-stroke cad-box" x="462" y="104" width="196" height="92" rx="10" stroke="#D4AF6A" stroke-width="1.4" fill="rgba(212,175,106,0.07)" pathLength="1"/>
+              <text x="478" y="128" fill="#D4AF6A" font-family="JetBrains Mono, monospace" font-size="9.5">03 · EPISÓDICO</text>
+              <text x="478" y="154" fill="#F0EDE6" font-family="Schibsted Grotesk, sans-serif" font-size="15.5" font-weight="600">Lobo Temporal</text>
+              <text x="478" y="177" fill="#9A968E" font-family="JetBrains Mono, monospace" font-size="9.5">RRF · Spreading Act.</text>
+
+              <rect class="cad-stroke cad-box" x="679" y="104" width="196" height="92" rx="10" stroke="rgba(240,237,230,0.28)" stroke-width="1.2" fill="#0F1218" pathLength="1"/>
+              <text x="695" y="128" fill="#3B8EA5" font-family="JetBrains Mono, monospace" font-size="9.5">04 · VISUAL QA</text>
+              <text x="695" y="154" fill="#F0EDE6" font-family="Schibsted Grotesk, sans-serif" font-size="15.5" font-weight="600">Lobo Occipital</text>
+              <text x="695" y="177" fill="#9A968E" font-family="JetBrains Mono, monospace" font-size="9.5">Playwright · TasteMem</text>
+
+              <rect class="cad-stroke cad-box" x="896" y="104" width="196" height="92" rx="10" stroke="#4CA771" stroke-width="1.3" fill="rgba(76,167,113,0.06)" pathLength="1"/>
+              <text x="912" y="128" fill="#4CA771" font-family="JetBrains Mono, monospace" font-size="9.5">05 · IDENTIDADE</text>
+              <text x="912" y="154" fill="#F0EDE6" font-family="Schibsted Grotesk, sans-serif" font-size="15.5" font-weight="600">Sistema Límbico</text>
+              <text x="912" y="177" fill="#9A968E" font-family="JetBrains Mono, monospace" font-size="9.5">Operator Intel · Ethics</text>
+
+              <!-- Vertical Conduits Lobes -> GraphRAG Base -->
+              <line class="cad-stroke cad-link" x1="126" y1="196" x2="126" y2="224" stroke="#3B8EA5" stroke-width="1.2" pathLength="1"/>
+              <line class="cad-stroke cad-link" x1="343" y1="196" x2="343" y2="224" stroke="#3B8EA5" stroke-width="1.2" pathLength="1"/>
+              <line class="cad-stroke cad-link" x1="560" y1="196" x2="560" y2="224" stroke="#3B8EA5" stroke-width="1.2" pathLength="1"/>
+              <line class="cad-stroke cad-link" x1="777" y1="196" x2="777" y2="224" stroke="#3B8EA5" stroke-width="1.2" pathLength="1"/>
+              <line class="cad-stroke cad-link" x1="994" y1="196" x2="994" y2="224" stroke="#3B8EA5" stroke-width="1.2" pathLength="1"/>
+
+              <!-- Persistent GraphRAG Foundation -->
+              <rect class="cad-stroke cad-box" x="28" y="224" width="1064" height="44" rx="10" stroke="#3B8EA5" stroke-width="1.3" fill="rgba(59,142,165,0.08)" pathLength="1"/>
+              <text x="560" y="250" text-anchor="middle" fill="#F0EDE6" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" letter-spacing="1.6">BASE PERSISTENTE GRAPHRAG HÍBRIDO RRF · 3.972+ NÓS · 38.126+ SINAPSES · ZERO AMNÉSIA</text>
             </svg>
           </div>
         </div>
@@ -334,82 +314,109 @@
     </section>
 
     <!-- ====================================================================
-         ACT 04: #01 THSYR FLAGSHIP — 5-STEP DISCRETE STATE MACHINE (.s-evp)
+         ACT 05: PROJECT #01 THSYR — EDITORIAL PAPER (#F0EDE6) PINNED 5-STATE + LIVE 3D CORE
          ==================================================================== -->
-    <section id="thsyr" class="scene s-evp" data-theme="dark" data-chapter="04" data-chapter-title="ThSyr #01">
-      <div class="pin evp-pin">
-        <div class="wrap-wide evp-grid">
-          <!-- Left: Fixed Flagship Identity + Actions -->
-          <div class="evp-left">
-            <div class="index-badge">
-              <span class="idx-num">01</span>
-              <span class="idx-label-gold" data-i18n="thsyr_tag">PROJETO PRINCIPAL &middot; COMPLEXIDADE MÁXIMA</span>
+    <section id="thsyr" class="thsyr-act" data-theme="light" data-chapter="thsyr" data-chapter-title="ThSyr #01">
+      <div class="act-inner">
+        <div class="thsyr-head">
+          <div>
+            <div class="section-tag dark-tag">05 &middot; <span data-i18n="thsyr_tag">Projeto Principal #01 &middot; Complexidade Máxima</span></div>
+            <h2 class="section-title dark-title">ThSyr Cognitive OS.<br><em>Zero caixa-preta.</em></h2>
+          </div>
+          <div class="thsyr-step-indicator" aria-label="Camada ativa do ThSyr">
+            <span class="thsyr-step-label tabular" id="thsyrStepCounter">01 / 05</span>
+            <div class="thsyr-step-dashes">
+              <span class="step-dash active" data-step="0"></span>
+              <span class="step-dash" data-step="1"></span>
+              <span class="step-dash" data-step="2"></span>
+              <span class="step-dash" data-step="3"></span>
+              <span class="step-dash" data-step="4"></span>
             </div>
-            <h2 class="t-xl evp-brand">ThSyr</h2>
-            <p class="evp-sub" data-i18n="thsyr_lead">
-              Sistema operacional cognitivo multiagente projetado do zero em Python e TypeScript.
-            </p>
+          </div>
+        </div>
 
-            <div class="evp-stats-mini">
-              <div><strong>206</strong><span>módulos Python</span></div>
-              <div><strong>77</strong><span>suítes pytest</span></div>
-              <div><strong>96,6%</strong><span>tipagem AST</span></div>
-            </div>
+        <div class="thsyr-split">
+          <!-- Left: Interactive 5-Layer Architecture Selector (Scroll-Pinned + Click/Hover) -->
+          <div class="thsyr-list" role="tablist" aria-label="Camadas do ThSyr Cognitive OS">
+            <button type="button" class="thsyr-row active" data-layer="0" data-lobe-sync="all">
+              <span class="thsyr-num tabular">01</span>
+              <div class="thsyr-row-copy">
+                <h3>GraphRAG em 5 Lobos Cerebrais</h3>
+                <p>3.972+ nós e 38.126+ sinapses com busca híbrida RRF e Spreading Activation persistente.</p>
+              </div>
+              <span class="thsyr-row-stat tabular">3.972+</span>
+            </button>
 
-            <div class="evp-actions">
-              <a href="https://github.com/Taiwansz/ThSyr" target="_blank" rel="noopener noreferrer" class="btn-solid-gold">Repositório GitHub &rarr;</a>
-              <button type="button" class="btn-line-dark" data-open-dossier="thsyr" data-i18n="btn_full_xray">Dossiê completo</button>
+            <button type="button" class="thsyr-row" data-layer="1" data-lobe-sync="frontal">
+              <span class="thsyr-num tabular">02</span>
+              <div class="thsyr-row-copy">
+                <h3>Inibição Pré-Frontal &amp; Anti-Bajulação</h3>
+                <p>Portões determinísticos em código bloqueiam falhas lógicas e preservam restrições imutáveis.</p>
+              </div>
+              <span class="thsyr-row-stat tabular">100%</span>
+            </button>
+
+            <button type="button" class="thsyr-row" data-layer="2" data-lobe-sync="parietal">
+              <span class="thsyr-num tabular">03</span>
+              <div class="thsyr-row-copy">
+                <h3>206 Módulos Auditados em AST</h3>
+                <p>96,6% de cobertura de tipagem estrita e 77 suítes pytest rodando antes de cada commit.</p>
+              </div>
+              <span class="thsyr-row-stat tabular">96,6%</span>
+            </button>
+
+            <button type="button" class="thsyr-row" data-layer="3" data-lobe-sync="temporal">
+              <span class="thsyr-num tabular">04</span>
+              <div class="thsyr-row-copy">
+                <h3>Desktop Control Center 3D</h3>
+                <p>Janela nativa React 18 + TS + Three.js renderizando pulsos reais sobre o grafo do repositório.</p>
+              </div>
+              <span class="thsyr-row-stat tabular">60fps</span>
+            </button>
+
+            <button type="button" class="thsyr-row" data-layer="4" data-lobe-sync="occipital">
+              <span class="thsyr-num tabular">05</span>
+              <div class="thsyr-row-copy">
+                <h3>Visual Studio Quality Loop</h3>
+                <p>Gate fechado em Playwright 1440px/390px, TasteMemory e inspeção visual multimodal real.</p>
+              </div>
+              <span class="thsyr-row-stat tabular">Gate</span>
+            </button>
+
+            <div class="thsyr-cta-row">
+              <a href="https://github.com/Taiwansz/ThSyr" target="_blank" rel="noopener noreferrer" class="btn btn-dark-solid">Repositório GitHub</a>
+              <button type="button" class="btn btn-dark-ghost" data-open-dossier="thsyr" data-i18n="btn_full_xray">Dossiê completo</button>
             </div>
           </div>
 
-          <!-- Right: 5 Discrete Quintile Steps (Masked Word Rises + Animated Gold Underline) -->
-          <div class="evp-right">
-            <div class="evp-steps-stage">
-              <article class="evp-step is-active" data-evp="0">
-                <span class="evp-step-num">CAMADA 01 / 05 &middot; GRAPHRAG &amp; SPREADING ACTIVATION</span>
-                <h3 class="evp-t">Memória persistente em <em>5 lobos cerebrais.</em></h3>
-                <p class="evp-desc">Conhecimento estruturado em Frontal, Parietal, Temporal, Occipital e Límbico — indexado em 3.972+ nós e 38.126+ sinapses com recuperação híbrida Reciprocal Rank Fusion.</p>
-                <div class="evp-file">engine/neural_retriever.py &middot; knowledge_graph.json</div>
-              </article>
+          <!-- Right: Double-Bezel Obsidian Stage with LIVE 60fps 3D Golden Neural Core -->
+          <div class="thsyr-console-wrap">
+            <div class="bezel-outer on-paper">
+              <div class="bezel-inner thsyr-console">
+                <div class="thsyr-console-bar">
+                  <span id="thsyrStageKicker" class="thsyr-console-kicker">01 &middot; GRAPHRAG &amp; SPREADING ACTIVATION</span>
+                  <span id="thsyrStageFile" class="thsyr-console-metric tabular">engine/neural_retriever.py</span>
+                </div>
 
-              <article class="evp-step" data-evp="1">
-                <span class="evp-step-num">CAMADA 02 / 05 &middot; INIBIÇÃO PRÉ-FRONTAL</span>
-                <h3 class="evp-t">Travas determinísticas contra <em>bajulação e alucinação.</em></h3>
-                <p class="evp-desc">Portões em software que auditam premissas, bloqueiam violações de restrições reais e mantêm memória escopada de preferências e regressões entre sessões.</p>
-                <div class="evp-file">engine/prefrontal_cortex.py &middot; engine/operator_intelligence.py</div>
-              </article>
+                <div class="core-canvas-box">
+                  <canvas id="thsyrLiveCore" width="600" height="390" aria-label="Núcleo Neural 3D animado do ThSyr com 5 lobos cerebrais"></canvas>
+                </div>
 
-              <article class="evp-step" data-evp="2">
-                <span class="evp-step-num">CAMADA 03 / 05 &middot; RIGOR DE ENGENHARIA</span>
-                <h3 class="evp-t">206 módulos auditados com <em>96,6% de tipagem AST.</em></h3>
-                <p class="evp-desc">Zero placeholders, 77 suítes pytest automatizadas, roteamento cognitivo determinístico e verificação de invariantes antes de qualquer commit.</p>
-                <div class="evp-file">engine/cognitive_router.py &middot; tests/ (77 suites)</div>
-              </article>
+                <div class="core-lobe-bar">
+                  <div class="core-lobe-pills" role="radiogroup" aria-label="Filtrar lobo cerebral no núcleo 3D">
+                    <button type="button" class="core-lobe-btn is-active" data-core-lobe="all">Todos</button>
+                    <button type="button" class="core-lobe-btn" data-core-lobe="frontal">Frontal</button>
+                    <button type="button" class="core-lobe-btn" data-core-lobe="parietal">Parietal</button>
+                    <button type="button" class="core-lobe-btn" data-core-lobe="temporal">Temporal</button>
+                    <button type="button" class="core-lobe-btn" data-core-lobe="occipital">Occipital</button>
+                    <button type="button" class="core-lobe-btn" data-core-lobe="limbico">Límbico</button>
+                  </div>
+                </div>
 
-              <article class="evp-step" data-evp="3">
-                <span class="evp-step-num">CAMADA 04 / 05 &middot; DESKTOP CONTROL CENTER</span>
-                <h3 class="evp-t">Núcleo neural 3D real em <em>React 18, TS e Three.js.</em></h3>
-                <p class="evp-desc">Interface empacotada em janela nativa Win32/WebView2 exibindo pulsos reais do runtime sobre o grafo real do repositório — reproduzida ao vivo na abertura desta página.</p>
-                <div class="evp-file">desktop/src/features/neural-core/NeuralCore.tsx</div>
-              </article>
-
-              <article class="evp-step" data-evp="4">
-                <span class="evp-step-num">CAMADA 05 / 05 &middot; VISUAL STUDIO QUALITY LOOP</span>
-                <h3 class="evp-t">Nenhuma interface é entregue sem <em>Playwright fechado.</em></h3>
-                <p class="evp-desc">Renderização real em 1440px e 390px, validação de colisões geométricas, zero erros de console e inspeção visual multimodal obrigatória antes de subir para produção.</p>
-                <div class="evp-file">engine/visual/validator.py &middot; engine/visual/critic.py</div>
-              </article>
-            </div>
-
-            <div class="evp-controls">
-              <ul class="evp-progress" aria-label="Progresso das camadas do ThSyr">
-                <li class="is-on"><button type="button" data-evp-jump="0" aria-label="Camada 1"></button></li>
-                <li><button type="button" data-evp-jump="1" aria-label="Camada 2"></button></li>
-                <li><button type="button" data-evp-jump="2" aria-label="Camada 3"></button></li>
-                <li><button type="button" data-evp-jump="3" aria-label="Camada 4"></button></li>
-                <li><button type="button" data-evp-jump="4" aria-label="Camada 5"></button></li>
-              </ul>
-              <span class="evp-hint">Role ou clique nos marcadores</span>
+                <div class="thsyr-console-foot">
+                  <p id="coreLobeReadout">Núcleo Holográfico ThSyr &middot; arraste para orbitar em 3D &middot; 3.972 nós &middot; 38.126 sinapses</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -420,14 +427,14 @@
     <div class="marquee" data-theme="gold" aria-hidden="true">
       <div class="marquee-track" id="marqueeTrack">
         <span>#01 THSYR COGNITIVE OS</span><i></i>
-        <span>#02 TOKLANG COMPILER</span><i></i>
+        <span>#02 TOKLANG v2.0 COMPILER</span><i></i>
         <span>#03 ATLAS ENGINEERING OS</span><i></i>
         <span>#04 THATHENA EPISTEMIC OS</span><i></i>
         <span>#05 THALLIUM CORE LEDGER</span><i></i>
         <span>#06 THPAY ESOCIAL ENGINE</span><i></i>
         <span>#07 SKYPIEA UE5 C++</span><i></i>
         <span>#01 THSYR COGNITIVE OS</span><i></i>
-        <span>#02 TOKLANG COMPILER</span><i></i>
+        <span>#02 TOKLANG v2.0 COMPILER</span><i></i>
         <span>#03 ATLAS ENGINEERING OS</span><i></i>
         <span>#04 THATHENA EPISTEMIC OS</span><i></i>
         <span>#05 THALLIUM CORE LEDGER</span><i></i>
@@ -437,143 +444,110 @@
     </div>
 
     <!-- ====================================================================
-         ACT 05: HORIZONTAL STAGGERED COMPLEXITY GALLERY (#02 -> #07) (.s-olhar)
+         ACT 06: AUTHORED SYSTEMS MATRIX #02 -> #07 (SYMMETRIC 3x2 DOUBLE-BEZEL)
          ==================================================================== -->
-    <section id="complexidade" class="scene s-olhar" data-theme="light" data-chapter="05" data-chapter-title="Complexidade #02–#07">
-      <div class="pin olhar-pin">
-        <div class="olhar-track" id="olharTrack" data-olhar>
-          <!-- Lead Panel -->
-          <div class="olhar-intro">
-            <span class="kicker"><b>05</b> <span data-i18n="rank_kicker">02 &mdash; 07 &middot; AUTORIA PRÓPRIA</span></span>
-            <h2 class="olhar-title" data-i18n="rank_h2">Cada sistema ranqueado pelo peso real de engenharia.</h2>
-            <p class="olhar-note" data-i18n="rank_note">
-              Estritamente repositórios de autoria própria — de compiladores determinísticos e auditores AST a ledgers contábeis ACID e C++ em Unreal Engine 5.
-            </p>
-            <div class="olhar-scroll-hint">Role para percorrer a galeria &rarr;</div>
-          </div>
-
-          <!-- 6 Staggered Cards Injected Dynamically by script.js -->
-          <div id="olharCardsMount" class="olhar-cards-mount"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         ACT 06: MONUMENTAL KPI IMPACT + HOLLOW STROKE FILL + LIVE TOKLANG LAB
-         ==================================================================== -->
-    <section id="toklang-kpi" class="scene s-bignum" data-theme="light" data-chapter="06" data-chapter-title="TokLang TCC">
-      <div class="wrap">
-        <div class="bignum-grid">
-          <div class="bignum-left">
-            <span class="kicker"><b>06</b> BENCHMARK EMPÍRICO &middot; TCC CIÊNCIA DA COMPUTAÇÃO</span>
-            <div class="bignum-n">-<span data-count="56.2" data-decimals="1">56,2</span><sup>%</sup></div>
-          </div>
-          <div class="bignum-right">
-            <p class="bignum-quote" id="strokeFillQuote">
-              de redução em <em>tokens faturados</em> e <em>-80,7% em FLOPs</em> de atenção quadrática O(n&sup2;) rodando sobre NVIDIA NIM A100.
-            </p>
-            <p class="bignum-note">Latência TTFT medida de 574 ms com reversibilidade 100% determinística via parser LL(1) + poda por Entropia de Shannon.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="toklang-lab" class="scene workbench-section" data-theme="dark" data-chapter-title="TokLang TCC">
-      <div class="wrap-wide">
-        <div class="workbench-top">
+    <section id="complexidade" class="systems-act" data-theme="dark" data-chapter="complexidade" data-chapter-title="Projetos #02–#07">
+      <div class="act-inner">
+        <div class="systems-head">
           <div>
-            <span class="eyebrow-gold" data-i18n="wb_kicker">PROVA INTERATIVA &middot; PROJETO #02 (TCC)</span>
-            <h2 class="t-l-light" data-i18n="wb_h2">Compilador TokLang ao vivo.</h2>
+            <div class="section-tag">06 &middot; <span data-i18n="rank_kicker">02 &mdash; 07 &middot; Autoria Própria</span></div>
+            <h2 class="section-title" data-i18n="rank_h2">Ranqueados pelo <em>peso real</em> de engenharia.</h2>
           </div>
-          <div class="wb-presets" role="group" aria-label="Exemplos de entrada para TokLang">
-            <button type="button" class="wb-preset is-active" data-preset="rag">Contexto RAG</button>
-            <button type="button" class="wb-preset" data-preset="api">Spec PostgreSQL / RLS</button>
-            <button type="button" class="wb-preset" data-preset="agent">Governança AST</button>
+          <p class="systems-lead" data-i18n="rank_note">
+            Estritamente repositórios de autoria própria — de compiladores BPE/CAPC e auditores AST a ledgers contábeis ACID e C++ em Unreal Engine 5.
+          </p>
+        </div>
+
+        <div id="systemsGridMount" class="systems-grid"></div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         ACT 07: TOKLANG v2.0 REAL COMPILER WORKBENCH + MONUMENTAL BIG NUMBER
+         ==================================================================== -->
+    <section id="toklang-lab" class="toklang-act" data-theme="dark" data-chapter="toklang-lab" data-chapter-title="TokLang v2">
+      <div class="act-inner">
+        <div class="bignum-band">
+          <div class="section-tag">07 &middot; <span data-i18n="wb_kicker">Prova Interativa &middot; Projeto #02 (TokLang v2.0 + TCC)</span></div>
+          <div class="bignum-row">
+            <div id="bigNumCounter" class="bignum-val">-59,9%</div>
+            <div class="bignum-copy">
+              <p class="bignum-lead">Corte BPE real em payloads JSON/MCP com <strong>100% de fidelidade lossless</strong> e <strong>-71,1% em custos CAPC</strong> (além dos -56,2% / -80,7% FLOPs validados no TCC em NVIDIA NIM A100).</p>
+              <span class="bignum-cmd">Motor v2.0 real rodando no navegador &middot; <a href="https://toklang-twn.vercel.app" target="_blank" rel="noopener noreferrer">toklang-twn.vercel.app &rarr;</a></span>
+            </div>
           </div>
         </div>
 
-        <div class="workbench-grid">
-          <div class="wb-pane">
-            <div class="wb-pane-bar">
-              <span>01 &middot; ENTRADA NATURAL</span>
-              <strong id="tokInputCount">0 tokens</strong>
-            </div>
-            <textarea id="tokInput" rows="7" spellcheck="false" aria-label="Entrada de texto para o compilador TokLang"></textarea>
-          </div>
-
-          <div class="wb-pane is-middle">
-            <div class="wb-pane-bar">
-              <span>02 &middot; PODA POR ENTROPIA</span>
-              <strong id="tokKeptCount">0 preservados</strong>
-            </div>
-            <div id="tokTokenDiff" class="wb-diff-view"></div>
-          </div>
-
-          <div class="wb-pane is-output">
-            <div class="wb-pane-bar">
-              <span>03 &middot; SAÍDA TOKLANG AST</span>
-              <strong id="tokOutputCount">0 tokens</strong>
-            </div>
-            <pre id="tokOutput" class="wb-code-out"></pre>
-          </div>
+        <!-- 4 Real Verified Presets (Symmetric 4-Col Desktop Bar) -->
+        <div class="wb-presets" role="tablist" aria-label="Cenários reais do compilador TokLang v2">
+          <button type="button" class="wb-preset is-active" data-preset="dev">
+            <span class="wb-p-idx">01</span><span>Prompt Dev + Negações</span><span class="wb-p-cut tabular">balanced</span>
+          </button>
+          <button type="button" class="wb-preset" data-preset="json">
+            <span class="wb-p-idx">02</span><span>JSON / MCP Lossless</span><span class="wb-p-cut tabular">@table</span>
+          </button>
+          <button type="button" class="wb-preset" data-preset="rag">
+            <span class="wb-p-idx">03</span><span>RAG BM25 (teto 60 tk)</span><span class="wb-p-cut tabular">knapsack</span>
+          </button>
+          <button type="button" class="wb-preset" data-preset="logs">
+            <span class="wb-p-idx">04</span><span>Logs de Produção</span><span class="wb-p-cut tabular">[x14]</span>
+          </button>
         </div>
 
-        <div class="workbench-metrics">
-          <div class="wb-metric">
-            <span>Redução neste prompt</span>
-            <strong id="tokReductionPct">-0.0%</strong>
-          </div>
-          <div class="wb-metric">
-            <span>Economia em atenção O(n&sup2;)</span>
-            <strong id="tokFlopsPct">-0.0%</strong>
-          </div>
-          <div class="wb-metric">
-            <span>Benchmark empírico TCC (NVIDIA A100)</span>
-            <strong>-56,2% tokens &middot; -80,7% FLOPs &middot; 574 ms TTFT</strong>
-          </div>
-          <div class="wb-metric-actions">
-            <button type="button" id="tokCopyBtn" class="btn-solid-gold">Copiar AST</button>
-            <a href="https://github.com/Taiwansz/TCC-CIENCIAS-DA-COMPUTACAO-2026" target="_blank" rel="noopener noreferrer" class="btn-line-dark">Ver TCC &rarr;</a>
+        <!-- Split 50/50 Double-Bezel Live Compiler -->
+        <div class="bezel-outer">
+          <div class="bezel-inner wb-stage">
+            <div class="wb-stage-bar">
+              <div class="wb-stage-meta">
+                <span id="wbStageTitle" class="wb-stage-title">01 &middot; Prompt Dev + Polarity Lock</span>
+                <span id="wbStageStages" class="wb-stage-pill">balanced &middot; phatic_strip</span>
+              </div>
+              <div class="wb-stage-btns">
+                <button type="button" id="tokCopyBtn" class="wb-action-btn">Copiar saída</button>
+                <a href="https://toklang-twn.vercel.app" target="_blank" rel="noopener noreferrer" class="wb-action-btn is-gold">Abrir TokLang Live &rarr;</a>
+              </div>
+            </div>
+
+            <div class="wb-compare-grid">
+              <div class="wb-pane wb-pane-in">
+                <div class="wb-pane-head">
+                  <span>Prompt Original (editável ao vivo)</span>
+                  <span id="tokInputCount" class="wb-tok-badge tabular">0 tokens</span>
+                </div>
+                <textarea id="tokInput" class="wb-textarea" rows="8" spellcheck="false" aria-label="Entrada de prompt para o compilador TokLang v2"></textarea>
+              </div>
+
+              <div class="wb-pane wb-pane-out">
+                <div class="wb-pane-head">
+                  <span>Saída Compilada TokLang v2.0</span>
+                  <span id="tokOutputCount" class="wb-tok-badge win tabular">0 tokens</span>
+                </div>
+                <pre id="tokOutput" class="wb-pre"></pre>
+              </div>
+            </div>
+
+            <div class="wb-stage-foot">
+              <div class="wb-foot-metrics">
+                <span>Corte: <strong id="tokReductionPct" class="tabular">0%</strong></span>
+                <span>FLOPs O(n&sup2;): <strong id="tokFlopsPct" class="tabular">0%</strong></span>
+                <span>Polarity Lock: <strong id="tokPolarityAudit" class="tabular">100%</strong></span>
+                <span class="wb-foot-note">Zero esqueletos consonantais &middot; Monotonicidade BPE garantida &middot; <a href="https://github.com/Taiwansz/TCC-CIENCIAS-DA-COMPUTACAO-2026" target="_blank" rel="noopener noreferrer">Repositório TCC</a></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ====================================================================
-         ACT 07: PINNED STRIKETHROUGH MANIFESTO OVER 3D PARTICLE WAVE (.s-resp)
+         ACT 08A: COMPLETE FILTERABLE INDEX (PAPEL #F0EDE6)
          ==================================================================== -->
-    <section id="principios" class="scene s-resp" data-theme="dark" data-chapter="07" data-chapter-title="Critérios">
-      <div class="pin resp-pin">
-        <canvas class="particles-fill" data-particles="" aria-hidden="true"></canvas>
-
-        <p class="resp-lead">
-          Ao projetar software de produção ou sistemas multiagentes, só o que sobrevive ao teste real importa.
-        </p>
-
-        <div class="resp-stack" aria-live="polite">
-          <div class="resp-line"><s>Templates genéricos de IA</s> <span>não entram.</span></div>
-          <div class="resp-line"><s>Agentes com amnésia</s> <span>não entram.</span></div>
-          <div class="resp-line"><s>Código sem teste real</s> <span>não entra.</span></div>
-          <div class="resp-line"><s>Banco multi-tenant sem RLS</s> <span>não entra.</span></div>
-          <div class="resp-line"><s>Gambiarra travestida de MVP</s> <span>não entra.</span></div>
-        </div>
-
-        <div class="resp-close">
-          <p>Engenharia com tolerância de micrômetro é</p>
-          <b>inegociável.</b>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         ACT 08A: COMPLETE FILTERABLE INDEX (AUTHORED REPOS + LIVE FLASK APPS)
-         ==================================================================== -->
-    <section id="indice" class="scene index-section" data-theme="light" data-chapter="08" data-chapter-title="Índice & Contato">
-      <div class="wrap-wide">
+    <section id="indice" class="index-act" data-theme="light" data-chapter="indice" data-chapter-title="Índice">
+      <div class="act-inner">
         <div class="index-head">
           <div>
-            <span class="kicker"><b>08</b> ÍNDICE COMPLETO DE ENGENHARIA</span>
-            <h2 class="t-l">Sistemas autorais &amp; demos ao vivo.</h2>
+            <div class="section-tag dark-tag">08 &middot; Índice Completo de Engenharia</div>
+            <h2 class="section-title dark-title">Sistemas autorais &amp; <em>demos ao vivo</em>.</h2>
           </div>
           <div id="archiveFilters" class="index-filters" role="tablist" aria-label="Filtrar obras"></div>
         </div>
@@ -583,53 +557,54 @@
     </section>
 
     <!-- ====================================================================
-         ACT 08B: STARK FINALE + MAGNETIC CTA
+         ACT 08B: STARK OBSIDIAN FINALE + MAGNETIC CTA
          ==================================================================== -->
-    <section id="contato" class="scene contact-section s-fim" data-theme="dark" data-chapter-title="Índice &amp; Contato">
-      <div class="wrap-wide contact-grid">
-        <div class="contact-left">
-          <span class="eyebrow-gold" data-i18n="fin_kicker">DISPONIBILIDADE &middot; 2026 / 2027</span>
-          <h2 class="contact-title">
-            <span data-i18n="fin_l1">Rigor de usinagem.</span><br>
-            <span class="gold-ink" data-i18n="fin_l2">Escala de software.</span>
-          </h2>
-          <p class="contact-sub" data-i18n="fin_sub">
-            Aberto a posições CLT Junior / Pleno em AI &amp; Software Engineering (Campinas/RMC ou Remoto Brasil) e oportunidades Remotas Globais em USD (fuso UTC-3).
-          </p>
-          <div class="fim-cta-wrap">
-            <a href="#topo" class="btn-magnetic" data-magnetic>Voltar ao topo &uarr;</a>
+    <section id="contato" class="contact-act" data-theme="dark" data-chapter="indice" data-chapter-title="Contato">
+      <div class="act-inner">
+        <div class="contact-grid">
+          <div class="contact-left">
+            <div class="section-tag" data-i18n="fin_kicker">Disponibilidade &middot; 2026 / 2027</div>
+            <h2 class="contact-title" data-i18n="fin_title">Rigor de usinagem.<br><em>Escala de software.</em></h2>
+            <p class="contact-sub" data-i18n="fin_sub">
+              Aberto a posições CLT Junior / Pleno em AI &amp; Software Engineering (Campinas/RMC ou Remoto Brasil) e oportunidades Remotas Globais em USD (fuso UTC-3).
+            </p>
+            <div class="contact-cta-wrap">
+              <a href="#topo" class="btn btn-primary" data-magnetic>Voltar ao topo &uarr;</a>
+              <a href="https://toklang-twn.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Abrir TokLang v2.0</a>
+            </div>
           </div>
-        </div>
 
-        <div class="contact-right">
-          <button type="button" id="copyEmailBtn" class="contact-card is-primary">
-            <span class="cc-label">E-mail direto (clique para copiar)</span>
-            <strong>std.matheus@gmail.com</strong>
-            <span class="cc-arrow">&rarr;</span>
-          </button>
+          <div class="contact-right">
+            <button type="button" id="copyEmailBtn" class="contact-card is-primary">
+              <span class="cc-label">E-mail direto (clique para copiar)</span>
+              <strong>std.matheus@gmail.com</strong>
+              <span class="cc-arrow">&rarr;</span>
+            </button>
 
-          <a href="https://github.com/Taiwansz" target="_blank" rel="noopener noreferrer" class="contact-card">
-            <span class="cc-label">Código-fonte &amp; benchmarks</span>
-            <strong>github.com/Taiwansz</strong>
-            <span class="cc-arrow">&rarr;</span>
-          </a>
+            <a href="https://github.com/Taiwansz" target="_blank" rel="noopener noreferrer" class="contact-card">
+              <span class="cc-label">Código-fonte &amp; benchmarks</span>
+              <strong>github.com/Taiwansz</strong>
+              <span class="cc-arrow">&rarr;</span>
+            </a>
 
-          <a href="https://www.linkedin.com/in/mth3us" target="_blank" rel="noopener noreferrer" class="contact-card">
-            <span class="cc-label">Perfil profissional</span>
-            <strong>linkedin.com/in/mth3us</strong>
-            <span class="cc-arrow">&rarr;</span>
-          </a>
+            <a href="https://www.linkedin.com/in/mth3us" target="_blank" rel="noopener noreferrer" class="contact-card">
+              <span class="cc-label">Perfil profissional</span>
+              <strong>linkedin.com/in/mth3us</strong>
+              <span class="cc-arrow">&rarr;</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer" data-theme="dark">
-    <div class="wrap-wide footer-inner">
+    <div class="act-inner footer-inner">
       <span>Matheus Sousa dos Santos &middot; Taiwansz &middot; 2026</span>
       <div class="footer-links">
         <a href="https://github.com/Taiwansz" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/mth3us" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://toklang-twn.vercel.app" target="_blank" rel="noopener noreferrer">TokLang v2</a>
         <a href="https://www.instagram.com/taiwan.sz/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </div>
@@ -651,13 +626,14 @@
   <!-- Toast -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <!-- Lenis Smooth Scroll + GSAP 3.12.5 + ScrollTrigger -->
+  <!-- Lenis Smooth Scroll + GSAP 3.12.5 + ScrollTrigger + Real TokLang v2 Engine -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="{{ url_for('static', filename='js/toklang-engine.js') }}?v=20261126a"></script>
   <script>
     window.PORTFOLIO_STATIC_BASE = "{{ url_for('static', filename='') }}";
   </script>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/atelier.js') }}?v=20261126a"></script>
 </body>
 </html>
